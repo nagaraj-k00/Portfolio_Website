@@ -3,35 +3,32 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const skillCategories = [
   {
+    title: 'Java & Backend',
+    skills: [
+      { name: 'Java', icon: '☕' },
+      { name: 'Spring', icon: '🌱' },
+      { name: 'Spring Boot', icon: '🍃' },
+      { name: 'REST APIs', icon: '🔗' },
+    ],
+  },
+  {
     title: 'Frontend',
     skills: [
       { name: 'HTML5', icon: '🌐' },
       { name: 'CSS3', icon: '🎨' },
       { name: 'JavaScript', icon: '⚡' },
       { name: 'React', icon: '⚛️' },
-      { name: 'Angular', icon: '🅰️' },
-      { name: 'Vue.js', icon: '💚' },
-      { name: 'TypeScript', icon: '📘' },
+      { name: 'Bootstrap', icon: '🅱️' },
       { name: 'Tailwind CSS', icon: '🌊' },
     ],
   },
   {
-    title: 'Backend',
+    title: 'Full Stack',
     skills: [
+      { name: 'MERN Stack', icon: '📦' },
       { name: 'Node.js', icon: '💚' },
-      { name: 'Django', icon: '🐍' },
-      { name: 'Flask', icon: '🌶️' },
-      { name: 'Spring Boot', icon: '🍃' },
       { name: 'Express.js', icon: '🚀' },
-      { name: 'GraphQL', icon: '◼️' },
-    ],
-  },
-  {
-    title: 'Mobile',
-    skills: [
-      { name: 'Flutter', icon: '💙' },
-      { name: 'React Native', icon: '📱' },
-      { name: 'Dart', icon: '🎯' },
+      { name: 'ASP.NET', icon: '🔷' },
     ],
   },
   {
@@ -40,29 +37,27 @@ const skillCategories = [
       { name: 'MySQL', icon: '🐬' },
       { name: 'MongoDB', icon: '🍃' },
       { name: 'PostgreSQL', icon: '🐘' },
-      { name: 'Redis', icon: '🔴' },
-      { name: 'Firebase', icon: '🔥' },
+      { name: 'Supabase', icon: '⚡' },
     ],
   },
   {
     title: 'Tools & DevOps',
     skills: [
       { name: 'Git', icon: '📦' },
+      { name: 'GitHub', icon: '🐙' },
       { name: 'Docker', icon: '🐳' },
-      { name: 'Kubernetes', icon: '☸️' },
       { name: 'AWS', icon: '☁️' },
-      { name: 'Postman', icon: '📮' },
-      { name: 'CI/CD', icon: '🔄' },
+      { name: 'VS Code', icon: '💻' },
+      { name: 'IntelliJ IDEA', icon: '🧠' },
     ],
   },
   {
     title: 'Other',
     skills: [
       { name: 'ML/DL', icon: '🤖' },
-      { name: 'WebSockets', icon: '🔌' },
       { name: 'REST API', icon: '🔗' },
-      { name: 'UI/UX', icon: '✨' },
-      { name: 'Agile', icon: '📋' },
+      { name: 'Postman', icon: '📮' },
+      { name: 'Eclipse', icon: '🌑' },
     ],
   },
 ];

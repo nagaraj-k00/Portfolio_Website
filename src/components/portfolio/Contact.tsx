@@ -8,10 +8,9 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useToast } from '@/hooks/use-toast';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com', label: 'GitHub', color: 'hover:text-foreground' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-[#0077b5]' },
-  { icon: Twitter, href: 'https://twitter.com', label: 'Twitter', color: 'hover:text-[#1da1f2]' },
-  { icon: Mail, href: 'mailto:alex@example.com', label: 'Email', color: 'hover:text-primary' },
+  { icon: Github, href: 'https://github.com/GPTMudhol', label: 'GitHub', color: 'hover:text-foreground' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/nagaraj-kamatagi-8b52972a2', label: 'LinkedIn', color: 'hover:text-[#0077b5]' },
+  { icon: Mail, href: 'mailto:nagarajkamatagi@gmail.com', label: 'Email', color: 'hover:text-primary' },
 ];
 
 export const Contact = () => {
@@ -75,20 +74,8 @@ export const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email</p>
-                      <a href="mailto:alex@example.com" className="text-foreground hover:text-primary transition-colors">
-                        alex@example.com
-                      </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                      <Phone size={24} />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Phone</p>
-                      <a href="tel:+1234567890" className="text-foreground hover:text-primary transition-colors">
-                        +1 (234) 567-890
+                      <a href="mailto:nagarajkamatagi@gmail.com" className="text-foreground hover:text-primary transition-colors">
+                        nagarajkamatagi@gmail.com
                       </a>
                     </div>
                   </div>
@@ -99,7 +86,7 @@ export const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Location</p>
-                      <p className="text-foreground">San Francisco, CA</p>
+                      <p className="text-foreground">Mudhol, Karnataka, India</p>
                     </div>
                   </div>
                 </div>
@@ -131,7 +118,7 @@ export const Contact = () => {
                   asChild
                   className="glow-button bg-primary text-primary-foreground hover:bg-primary/90 flex-1"
                 >
-                  <a href="mailto:alex@example.com">
+                  <a href="mailto:nagarajkamatagi@gmail.com">
                     <Mail className="mr-2" size={18} />
                     Send Email
                   </a>
@@ -141,7 +128,7 @@ export const Contact = () => {
                   variant="outline"
                   className="border-primary/50 text-foreground hover:bg-primary/10 flex-1"
                 >
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.linkedin.com/in/nagaraj-kamatagi-8b52972a2" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="mr-2" size={18} />
                     Connect on LinkedIn
                   </a>

@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import { useTypewriter } from '@/hooks/useTypewriter';
 
 export const Hero = () => {
-  const { displayText: nameText, isComplete: nameComplete } = useTypewriter('Alex Chen', 100, 500);
-  const { displayText: titleText } = useTypewriter('Full-Stack Developer', 80, 1800);
+  const { displayText: nameText, isComplete: nameComplete } = useTypewriter('Nagaraj Kamatagi', 100, 500);
+  const { displayText: titleText } = useTypewriter('Java & Full Stack Developer', 80, 1800);
 
   const scrollToProjects = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
@@ -76,8 +76,8 @@ export const Hero = () => {
             transition={{ delay: 3 }}
             className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
           >
-            I craft elegant, performant web applications with modern technologies.
-            Passionate about clean code and exceptional user experiences.
+            Building scalable web applications with Java, Spring Boot, MERN Stack, and modern frontend technologies.
+            Strong in REST API development, database design, and problem-solving.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -112,9 +112,9 @@ export const Hero = () => {
             className="flex items-center justify-center gap-6"
           >
             {[
-              { icon: Github, href: 'https://github.com', label: 'GitHub' },
-              { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-              { icon: Mail, href: 'mailto:alex@example.com', label: 'Email' },
+              { icon: Github, href: 'https://github.com/GPTMudhol', label: 'GitHub' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/nagaraj-kamatagi-8b52972a2', label: 'LinkedIn' },
+              { icon: Mail, href: 'mailto:nagarajkamatagi@gmail.com', label: 'Email' },
             ].map(({ icon: Icon, href, label }) => (
               <motion.a
                 key={label}
