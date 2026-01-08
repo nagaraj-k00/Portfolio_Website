@@ -3,25 +3,25 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useCountUp } from '@/hooks/useCountUp';
 
 const stats = [
-  { label: 'Years Experience', value: 5 },
-  { label: 'Projects Completed', value: 50 },
-  { label: 'Happy Clients', value: 30 },
-  { label: 'GitHub Stars', value: 500 },
+  { label: 'Projects Completed', value: 5 },
+  { label: 'Certifications', value: 6 },
+  { label: 'Technologies', value: 20 },
+  { label: 'GitHub Repos', value: 10 },
 ];
 
 const skills = [
-  { name: 'React / Next.js', level: 95 },
-  { name: 'TypeScript', level: 90 },
-  { name: 'Node.js', level: 85 },
-  { name: 'Python', level: 80 },
-  { name: 'PostgreSQL', level: 85 },
-  { name: 'AWS / Cloud', level: 75 },
+  { name: 'Java / Spring Boot', level: 90 },
+  { name: 'React / JavaScript', level: 85 },
+  { name: 'MERN Stack', level: 80 },
+  { name: 'MySQL / MongoDB', level: 85 },
+  { name: 'HTML / CSS / Tailwind', level: 90 },
+  { name: 'Docker / AWS', level: 70 },
 ];
 
 const techStack = [
-  'React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL',
-  'MongoDB', 'GraphQL', 'Docker', 'AWS', 'Tailwind CSS', 'Framer Motion',
-  'Git', 'Redis', 'Prisma', 'Supabase'
+  'Java', 'Spring Boot', 'React', 'Node.js', 'JavaScript', 'TypeScript',
+  'MongoDB', 'MySQL', 'PostgreSQL', 'Supabase', 'Docker', 'AWS',
+  'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap', 'Git', 'REST API'
 ];
 
 export const About = () => {
@@ -69,12 +69,12 @@ export const About = () => {
               <div className="glass-card rounded-2xl p-8">
                 <h3 className="text-2xl font-semibold mb-4 text-foreground">Hello!</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  I'm a full-stack developer with 5+ years of experience building scalable web applications. 
-                  I specialize in React, TypeScript, and modern backend technologies.
+                  I'm a Java & Full Stack Developer (Student) with hands-on experience in building web applications 
+                  using Java, Spring Boot, MERN Stack, and modern frontend technologies.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  When I'm not coding, you'll find me exploring new technologies, contributing to open source, 
-                  or sharing knowledge through tech blogs and mentoring.
+                  Strong in REST API development, database design, and problem-solving. Quick learner with internship 
+                  experience, real-world projects, and industry-recognized certifications.
                 </p>
               </div>
             </div>
