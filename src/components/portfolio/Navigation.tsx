@@ -124,7 +124,7 @@ export const Navigation = () => {
             className="md:hidden bg-card border-t border-border mt-4"
           >
             <div className="flex flex-col p-6 gap-4">
-              {navItems.map((item) => (
+              {navItems.map((item, index) => (
                 <motion.a
                   key={item.label}
                   href={item.href}
@@ -132,18 +132,27 @@ export const Navigation = () => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
                   className="text-muted-foreground hover:text-primary transition-colors py-2 cursor-pointer font-medium"
                   whileHover={{ x: 10 }}
                 >
                   {item.label}
                 </motion.a>
               ))}
-              <Button
-                onClick={() => scrollToSection('#contact')}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-2"
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navItems.length * 0.05 + 0.1 }}
               >
-                Let's Chat
-              </Button>
+                <Button
+                  onClick={() => scrollToSection('#contact')}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-2"
+                >
+                  Let's Chat
+                </Button>
+              </motion.div>
             </div>
           </motion.div>
         )}
