@@ -3,10 +3,10 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Mail, Phone, Calendar, Globe, Github, Linkedin, Twitter, MessageCircle } from "lucide-react";
 
 const personalInfo = [
-  { icon: Mail, label: "Contact", value: "nagarajkamatagi@gmail.com" },
-  { icon: Phone, label: "Phone", value: "+91 9380633832" },
-  { icon: Calendar, label: "Date of Birth", value: "Student Developer" },
-  { icon: Globe, label: "Spoken Languages", value: "English - Kannada - Hindi" },
+  { icon: Mail, label: "email", value: "nagarajkamatagi@gmail.com" },
+  { icon: Phone, label: "phone", value: "+91 9380633832" },
+  { icon: Calendar, label: "status", value: "Student Developer" },
+  { icon: Globe, label: "languages", value: "English - Kannada - Hindi" },
 ];
 
 const socialLinks = [
@@ -72,15 +72,8 @@ export const About = () => {
                 className="grid sm:grid-cols-2 gap-6 pt-6"
               >
                 {personalInfo.map((info, index) => (
-                  <div key={info.label} className="flex items-start gap-3">
-                    <div className="text-muted-foreground text-sm font-medium uppercase tracking-wider">
-                      {info.label}
-                    </div>
-                  </div>
-                ))}
-                {personalInfo.map((info, index) => (
                   <motion.div
-                    key={`value-${info.label}`}
+                    key={info.label}
                     initial={{ opacity: 0, x: -10 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : {}}
                     transition={{ delay: 0.5 + index * 0.1 }}
