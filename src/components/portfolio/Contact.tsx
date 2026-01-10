@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, Linkedin, Github, MapPin, MessageSquare, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,6 +6,11 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
+
+const EMAILJS_SERVICE_ID = 'service_nsgtoqo';
+const EMAILJS_TEMPLATE_ID = 'template_qg425te';
+const EMAILJS_PUBLIC_KEY = '0SaGubQS4P6PgqBqJ';
 
 const socialLinks = [
   { icon: Github, href: 'https://github.com/GPTMudhol', label: 'GitHub', color: 'hover:bg-[#333] hover:text-white' },
@@ -14,6 +19,7 @@ const socialLinks = [
 ];
 
 export const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const { ref, isVisible } = useScrollAnimation(0.1);
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -22,17 +28,47 @@ export const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      toast({
+        title: "Please fill all fields",
+        description: "All fields are required.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message sent! 🎉",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
-    
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Nagaraj Kamatagi',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      
+      toast({
+        title: "Message sent! 🎉",
+        description: "Thanks for reaching out. I'll get back to you soon!",
+      });
+      
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or email me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
