@@ -74,7 +74,7 @@ export const Skills = () => {
                 whileHover={{ y: -8, borderColor: 'hsl(var(--primary) / 0.5)' }}
                 className="glass-card rounded-2xl p-8 transition-all duration-300 group"
               >
-                <div className={`w-16 h-16 rounded-xl ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                <div className={`w-16 h-16 glass-icon ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                   <service.icon size={28} />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-4 font-display">
@@ -117,7 +117,7 @@ export const Skills = () => {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-secondary/50 flex items-center justify-center text-lg">
+                    <div className="w-10 h-10 glass-icon flex items-center justify-center text-lg">
                       {skill.icon}
                     </div>
                     <span className="text-foreground font-medium">{skill.name}</span>

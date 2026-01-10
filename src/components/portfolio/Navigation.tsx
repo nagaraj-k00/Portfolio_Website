@@ -45,7 +45,7 @@ export const Navigation = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-background/95 backdrop-blur-lg border-b border-border/50 py-4' 
+          ? 'glass-nav py-4' 
           : 'py-6 bg-transparent'
       }`}
     >
@@ -60,8 +60,8 @@ export const Navigation = () => {
           className="flex items-center gap-2 cursor-pointer"
           whileHover={{ scale: 1.02 }}
         >
-          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">N</span>
+          <div className="w-10 h-10 glass-icon flex items-center justify-center">
+            <span className="text-primary font-bold text-lg">N</span>
           </div>
           <span className="text-xl font-bold text-foreground hidden sm:block">Nagaraj</span>
         </motion.a>
@@ -97,7 +97,7 @@ export const Navigation = () => {
 
           <Button
             onClick={() => scrollToSection('#contact')}
-            className="bg-transparent border border-border hover:bg-primary hover:border-primary hover:text-primary-foreground text-foreground transition-all duration-300 rounded-lg px-6"
+            className="glass-button hover:bg-primary hover:border-primary hover:text-primary-foreground text-foreground transition-all duration-300 rounded-xl px-6"
           >
             Let's Chat
           </Button>
@@ -121,7 +121,7 @@ export const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card border-t border-border mt-4"
+            className="md:hidden glass-card border-t border-border/30 mt-4 mx-4 rounded-2xl"
           >
             <div className="flex flex-col p-6 gap-4">
               {navItems.map((item, index) => (
