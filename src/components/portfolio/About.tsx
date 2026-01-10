@@ -1,19 +1,19 @@
-import { motion } from 'framer-motion';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Mail, Phone, Calendar, Globe, Github, Linkedin, Twitter, MessageCircle } from 'lucide-react';
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Mail, Phone, Calendar, Globe, Github, Linkedin, Twitter, MessageCircle } from "lucide-react";
 
 const personalInfo = [
-  { icon: Mail, label: 'Contact', value: 'nagarajkamatagi@gmail.com' },
-  { icon: Phone, label: 'Phone', value: '+91 (XXX) XXX-XXXX' },
-  { icon: Calendar, label: 'Date of Birth', value: 'Student Developer' },
-  { icon: Globe, label: 'Spoken Languages', value: 'English - Kannada - Hindi' },
+  { icon: Mail, label: "Contact", value: "nagarajkamatagi@gmail.com" },
+  { icon: Phone, label: "Phone", value: "+91 9380633832" },
+  { icon: Calendar, label: "Date of Birth", value: "Student Developer" },
+  { icon: Globe, label: "Spoken Languages", value: "English - Kannada - Hindi" },
 ];
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/GPTMudhol', color: 'hover:bg-[#333]' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/nagaraj-kamatagi-8b52972a2', color: 'hover:bg-[#0077b5]' },
-  { icon: Twitter, href: '#', color: 'hover:bg-[#1da1f2]' },
-  { icon: MessageCircle, href: '#', color: 'hover:bg-[#25d366]' },
+  { icon: Github, href: "https://github.com/GPTMudhol", color: "hover:bg-[#333]" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/nagaraj-kamatagi-8b52972a2", color: "hover:bg-[#0077b5]" },
+  { icon: Twitter, href: "#", color: "hover:bg-[#1da1f2]" },
+  { icon: MessageCircle, href: "#", color: "hover:bg-[#25d366]" },
 ];
 
 export const About = () => {
@@ -37,9 +37,7 @@ export const About = () => {
               <span className="w-2 h-2 rounded-full bg-primary" />
               <span className="text-sm font-medium text-primary uppercase tracking-wider">About Me</span>
             </motion.div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">
-              Hi! I'm Nagaraj Kamatagi
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">Hi! I'm Nagaraj Kamatagi</h2>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -51,7 +49,10 @@ export const About = () => {
                 transition={{ delay: 0.2 }}
                 className="text-muted-foreground leading-relaxed text-lg"
               >
-                I'm a passionate and results-driven <span className="text-foreground font-medium">Java & Full Stack Developer</span> with hands-on experience in building scalable web applications using Java, Spring Boot, MERN Stack, and modern frontend technologies.
+                I'm a passionate and results-driven{" "}
+                <span className="text-foreground font-medium">Java & Full Stack Developer</span> with hands-on
+                experience in building scalable web applications using Java, Spring Boot, MERN Stack, and modern
+                frontend technologies.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -59,7 +60,8 @@ export const About = () => {
                 transition={{ delay: 0.3 }}
                 className="text-muted-foreground leading-relaxed text-lg"
               >
-                Strong in user-centered design, REST API development, database architecture, and problem-solving. Quick learner with internship experience, real-world projects, and industry-recognized certifications.
+                Strong in user-centered design, REST API development, database architecture, and problem-solving. Quick
+                learner with internship experience, real-world projects, and industry-recognized certifications.
               </motion.p>
 
               {/* Personal Info Grid */}
@@ -135,15 +137,15 @@ export const About = () => {
               className="relative"
             >
               <div className="aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-gradient-to-br from-secondary via-card to-secondary">
-                <img 
-                  src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg" 
+                <img
+                  src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg"
                   alt="Nagaraj Kamatagi"
                   className="w-full h-full object-cover object-center"
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
               </div>
-              
+
               {/* Decorative elements */}
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl" />
