@@ -116,9 +116,11 @@ export const Hero = () => {
               {/* Profile Image Container */}
               <div className="relative aspect-[4/5] max-w-md mx-auto rounded-2xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80" />
-                <div className="w-full h-full bg-gradient-to-br from-secondary via-card to-secondary flex items-center justify-center">
-                  <span className="text-9xl opacity-80">👨‍💻</span>
-                </div>
+                <img 
+                  src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg" 
+                  alt="Nagaraj Kamatagi"
+                  className="w-full h-full object-cover object-center"
+                />
                 
                 {/* Gradient Overlay at Bottom */}
                 <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-orange-500/30 via-primary/20 to-transparent" />

@@ -135,11 +135,13 @@ export const About = () => {
               className="relative"
             >
               <div className="aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-gradient-to-br from-secondary via-card to-secondary">
-                <div className="w-full h-full flex items-center justify-center relative">
-                  <span className="text-9xl opacity-80">👨‍💻</span>
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
-                </div>
+                <img 
+                  src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg" 
+                  alt="Nagaraj Kamatagi"
+                  className="w-full h-full object-cover object-center"
+                />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
               </div>
               
               {/* Decorative elements */}
