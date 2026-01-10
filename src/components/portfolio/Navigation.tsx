@@ -31,9 +31,12 @@ export const Navigation = () => {
   };
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
+    // Small delay to allow mobile menu to close before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
 
   return (
