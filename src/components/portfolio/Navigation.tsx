@@ -5,12 +5,11 @@ import { Button } from '@/components/ui/button';
 
 const navItems = [
   { label: 'Home', href: '#hero' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'About Me', href: '#about' },
+  { label: 'Services', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'Client', href: '#testimonials' },
   { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '#contact' },
 ];
 
 export const Navigation = () => {
@@ -42,24 +41,30 @@ export const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-card py-3' : 'py-6 bg-transparent'
+        isScrolled 
+          ? 'bg-background/95 backdrop-blur-lg border-b border-border/50 py-4' 
+          : 'py-6 bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
+      <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
+        {/* Logo */}
         <motion.a
           href="#hero"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection('#hero');
           }}
-          className="text-2xl font-bold gradient-text cursor-pointer"
-          whileHover={{ scale: 1.05 }}
+          className="flex items-center gap-2 cursor-pointer"
+          whileHover={{ scale: 1.02 }}
         >
-          {'<Dev />'}
+          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-lg">N</span>
+          </div>
+          <span className="text-xl font-bold text-foreground hidden sm:block">Nagaraj</span>
         </motion.a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <motion.a
               key={item.label}
@@ -68,14 +73,15 @@ export const Navigation = () => {
                 e.preventDefault();
                 scrollToSection(item.href);
               }}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 relative group cursor-pointer"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer font-medium"
               whileHover={{ y: -2 }}
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </motion.a>
           ))}
-          
+        </div>
+
+        <div className="hidden md:flex items-center gap-4">
           {/* Dark Mode Toggle */}
           <Button
             variant="ghost"
@@ -88,9 +94,9 @@ export const Navigation = () => {
 
           <Button
             onClick={() => scrollToSection('#contact')}
-            className="glow-button bg-primary text-primary-foreground hover:bg-primary/90"
+            className="bg-transparent border border-border hover:bg-primary hover:border-primary hover:text-primary-foreground text-foreground transition-all duration-300 rounded-lg px-6"
           >
-            Hire Me
+            Let's Chat
           </Button>
         </div>
 
@@ -112,9 +118,9 @@ export const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-card mt-2 mx-4 rounded-lg overflow-hidden"
+            className="md:hidden bg-card border-t border-border mt-4"
           >
-            <div className="flex flex-col p-4 gap-4">
+            <div className="flex flex-col p-6 gap-4">
               {navItems.map((item) => (
                 <motion.a
                   key={item.label}
@@ -123,7 +129,7 @@ export const Navigation = () => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className="text-muted-foreground hover:text-primary transition-colors py-2 cursor-pointer"
+                  className="text-muted-foreground hover:text-primary transition-colors py-2 cursor-pointer font-medium"
                   whileHover={{ x: 10 }}
                 >
                   {item.label}
@@ -131,9 +137,9 @@ export const Navigation = () => {
               ))}
               <Button
                 onClick={() => scrollToSection('#contact')}
-                className="glow-button bg-primary text-primary-foreground hover:bg-primary/90 w-full"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-2"
               >
-                Hire Me
+                Let's Chat
               </Button>
             </div>
           </motion.div>
