@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight, Folder, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -16,6 +16,7 @@ const projects = [
     tech: ['Java', 'Web Tech', 'ML'],
     liveUrl: '#',
     githubUrl: 'https://github.com/GPTMudhol',
+    featured: true,
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ const projects = [
     tech: ['Java', 'MySQL', 'NLP'],
     liveUrl: '#',
     githubUrl: 'https://github.com/GPTMudhol',
+    featured: false,
   },
   {
     id: 3,
@@ -36,6 +38,7 @@ const projects = [
     tech: ['Java', 'Spring Boot', 'MySQL'],
     liveUrl: '#',
     githubUrl: 'https://github.com/GPTMudhol',
+    featured: true,
   },
   {
     id: 4,
@@ -46,6 +49,7 @@ const projects = [
     tech: ['Java', 'Web Tech', 'Database'],
     liveUrl: '#',
     githubUrl: 'https://github.com/GPTMudhol',
+    featured: false,
   },
   {
     id: 5,
@@ -56,6 +60,7 @@ const projects = [
     tech: ['Python', 'Neural Networks', 'ML/DL'],
     liveUrl: '#',
     githubUrl: 'https://github.com/GPTMudhol',
+    featured: true,
   },
 ];
 
@@ -68,8 +73,14 @@ export const Projects = () => {
     : projects.filter(p => p.category === activeCategory);
 
   return (
-    <section id="projects" className="py-24 relative">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+      <motion.div
+        className="absolute top-1/2 -left-40 w-80 h-80 bg-cyan/5 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.3, 1] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
       
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div
@@ -79,7 +90,14 @@ export const Projects = () => {
         >
           {/* Section Header */}
           <div className="text-center mb-12">
-            <p className="text-primary font-mono mb-2">{'// My Work'}</p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4"
+            >
+              <Folder className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">Portfolio</span>
+            </motion.div>
             <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
               Featured Projects
             </h2>
@@ -88,21 +106,28 @@ export const Projects = () => {
             </p>
           </div>
 
-          {/* Category Filter */}
+          {/* Category Filter with Enhanced Styling */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             {categories.map((category) => (
-              <Button
-                key={category}
-                variant={activeCategory === category ? 'default' : 'outline'}
-                onClick={() => setActiveCategory(category)}
-                className={`transition-all duration-300 ${
-                  activeCategory === category
-                    ? 'glow-button bg-primary text-primary-foreground'
-                    : 'border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50'
-                }`}
-              >
-                {category}
-              </Button>
+              <motion.div key={category} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button
+                  variant={activeCategory === category ? 'default' : 'outline'}
+                  onClick={() => setActiveCategory(category)}
+                  className={`transition-all duration-300 ${
+                    activeCategory === category
+                      ? 'glow-button bg-primary text-primary-foreground shadow-lg shadow-primary/25'
+                      : 'border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-primary/5'
+                  }`}
+                >
+                  {category}
+                  {activeCategory === category && (
+                    <motion.span
+                      layoutId="categoryIndicator"
+                      className="ml-2 w-2 h-2 rounded-full bg-primary-foreground"
+                    />
+                  )}
+                </Button>
+              </motion.div>
             ))}
           </div>
 
@@ -129,15 +154,32 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.3, delay: index * 0.1 }}
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.9, y: -20 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
       className="group relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="glass-card rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/50">
+      <motion.div 
+        className="glass-card rounded-2xl overflow-hidden transition-all duration-500"
+        whileHover={{ borderColor: 'hsl(var(--primary) / 0.5)' }}
+      >
+        {/* Featured Badge */}
+        {project.featured && (
+          <div className="absolute top-4 left-4 z-20">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="flex items-center gap-1 px-2 py-1 bg-yellow-500/20 border border-yellow-500/30 rounded-full"
+            >
+              <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
+              <span className="text-xs font-medium text-yellow-500">Featured</span>
+            </motion.div>
+          </div>
+        )}
+
         {/* Image Container */}
         <div className="relative aspect-video overflow-hidden">
           <motion.img
@@ -148,85 +190,95 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
             transition={{ duration: 0.5 }}
           />
           
-          {/* Overlay */}
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+          
+          {/* Hover Overlay with Links */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"
+            className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="absolute bottom-4 left-4 right-4 flex gap-3">
-              <motion.a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-              >
-                <ExternalLink size={16} />
-                Live Demo
-              </motion.a>
-              <motion.a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg text-sm font-medium hover:bg-secondary/80 transition-colors"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
-                transition={{ duration: 0.3, delay: 0.15 }}
-              >
-                <Github size={16} />
-                Code
-              </motion.a>
-            </div>
+            <motion.a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ExternalLink size={16} />
+              Live Demo
+            </motion.a>
+            <motion.a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 bg-secondary text-secondary-foreground rounded-xl text-sm font-medium hover:bg-secondary/80 transition-colors"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Github size={16} />
+              Code
+            </motion.a>
           </motion.div>
 
           {/* Category Badge */}
-          <div className="absolute top-4 right-4">
-            <span className="px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-medium rounded-full">
+          <div className="absolute top-4 right-4 z-10">
+            <motion.span 
+              className="px-3 py-1.5 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-medium rounded-full"
+              whileHover={{ scale: 1.05 }}
+            >
               {project.category}
-            </span>
+            </motion.span>
           </div>
         </div>
 
         {/* Content */}
         <div className="p-6">
           <div className="flex items-start justify-between mb-3">
-            <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+            <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
               {project.title}
             </h3>
             <motion.div
-              animate={{ rotate: isHovered ? 45 : 0 }}
+              animate={{ rotate: isHovered ? 45 : 0, scale: isHovered ? 1.1 : 1 }}
               transition={{ duration: 0.3 }}
+              className="p-1 rounded-md bg-primary/10"
             >
-              <ArrowUpRight className="text-primary" size={20} />
+              <ArrowUpRight className="text-primary" size={18} />
             </motion.div>
           </div>
           
-          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+          <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
             {project.description}
           </p>
 
-          {/* Tech Stack */}
+          {/* Tech Stack with Enhanced Styling */}
           <div className="flex flex-wrap gap-2">
             {project.tech.map((tech) => (
-              <span
+              <motion.span
                 key={tech}
-                className="px-2 py-1 bg-secondary/50 text-secondary-foreground text-xs rounded-md"
+                whileHover={{ scale: 1.05, backgroundColor: 'hsl(var(--primary) / 0.15)' }}
+                className="px-2.5 py-1 bg-secondary/50 text-secondary-foreground text-xs rounded-md border border-border/30 transition-colors"
               >
                 {tech}
-              </span>
+              </motion.span>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Glow Effect */}
       <motion.div
-        className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-cyan/20 rounded-2xl blur-xl -z-10"
-        animate={{ opacity: isHovered ? 1 : 0 }}
+        className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-cyan/20 to-primary/20 rounded-2xl blur-xl -z-10"
+        animate={{ opacity: isHovered ? 0.8 : 0 }}
         transition={{ duration: 0.3 }}
       />
     </motion.div>
