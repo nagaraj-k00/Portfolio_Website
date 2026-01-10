@@ -1,69 +1,70 @@
-import { motion } from 'framer-motion';
-import { GraduationCap, Award, Calendar, ExternalLink } from 'lucide-react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { motion } from "framer-motion";
+import { GraduationCap, Award, Calendar, ExternalLink } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const education = [
   {
     id: 1,
-    degree: 'B.E. Computer Science & Engineering',
-    institution: 'BG Basava Mahaswamiji Institute of Technology, Mudhol',
-    period: '2024 - 2028 (Expected)',
-    description: 'Pursuing Bachelor of Engineering in Computer Science with focus on software development and web technologies.',
-    gpa: 'Ongoing',
+    degree: "B.E. Computer Science & Engineering",
+    institution: "Biluru GuruBasava Mahaswamiji Institute of Technology, Mudhol",
+    period: "2024 - 2028 (Expected)",
+    description:
+      "Pursuing Bachelor of Engineering in Computer Science with focus on software development and web technologies.",
+    gpa: "Ongoing",
   },
   {
     id: 2,
-    degree: 'Diploma in Computer Science & Engineering',
-    institution: 'Government Polytechnic, Mudhol',
-    period: 'Completed',
-    description: 'Comprehensive diploma covering programming fundamentals, database management, and computer systems.',
-    gpa: 'Completed',
+    degree: "Diploma in Computer Science & Engineering",
+    institution: "Government Polytechnic, Mudhol",
+    period: "Completed",
+    description: "Comprehensive diploma covering programming fundamentals, database management, and computer systems.",
+    gpa: "Completed",
   },
   {
     id: 3,
-    degree: 'PUC (Arts)',
-    institution: 'Rural Development Society, Mudalagi',
-    period: 'Completed',
-    description: 'Pre-university education with foundation in arts and general studies.',
-    gpa: 'Completed',
+    degree: "PUC (Arts)",
+    institution: "Rural Development Society, Mudalagi",
+    period: "Completed",
+    description: "Pre-university education with foundation in arts and general studies.",
+    gpa: "Completed",
   },
 ];
 
 const certifications = [
   {
     id: 1,
-    name: 'Software Engineering Job Simulation',
-    issuer: 'Forage / Infosys Springboard',
-    date: '2026',
-    credentialUrl: '#',
+    name: "Software Engineering Job Simulation",
+    issuer: "Forage / Infosys Springboard",
+    date: "2026",
+    credentialUrl: "#",
   },
   {
     id: 2,
-    name: 'AWS Solutions Architecture Job Simulation',
-    issuer: 'Forage / Infosys Springboard',
-    date: '2026',
-    credentialUrl: '#',
+    name: "AWS Solutions Architecture Job Simulation",
+    issuer: "Forage / Infosys Springboard",
+    date: "2026",
+    credentialUrl: "#",
   },
   {
     id: 3,
-    name: 'Fundamentals of Java Programming',
-    issuer: 'Coursera (Board Infinity)',
-    date: '2024',
-    credentialUrl: '#',
+    name: "Fundamentals of Java Programming",
+    issuer: "Coursera (Board Infinity)",
+    date: "2024",
+    credentialUrl: "#",
   },
   {
     id: 4,
-    name: 'Computer Networking',
-    issuer: 'Coursera (Google)',
-    date: '2024',
-    credentialUrl: '#',
+    name: "Computer Networking",
+    issuer: "Coursera (Google)",
+    date: "2024",
+    credentialUrl: "#",
   },
   {
     id: 5,
-    name: 'Java Programming',
-    issuer: 'Great Learning',
-    date: '2024',
-    credentialUrl: '#',
+    name: "Java Programming",
+    issuer: "Great Learning",
+    date: "2024",
+    credentialUrl: "#",
   },
 ];
 
@@ -82,10 +83,8 @@ export const Education = () => {
         >
           {/* Section Header */}
           <div className="text-center mb-16">
-            <p className="text-primary font-mono mb-2">{'// Academic Background'}</p>
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-              Education & Certifications
-            </h2>
+            <p className="text-primary font-mono mb-2">{"// Academic Background"}</p>
+            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">Education & Certifications</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               My academic journey and professional certifications
             </p>
@@ -114,9 +113,7 @@ export const Education = () => {
                         </h4>
                         <p className="text-primary font-medium">{edu.institution}</p>
                       </div>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
-                        {edu.gpa}
-                      </span>
+                      <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">{edu.gpa}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
                       <Calendar size={14} />
@@ -155,7 +152,10 @@ export const Education = () => {
                         {cert.issuer} • {cert.date}
                       </p>
                     </div>
-                    <ExternalLink size={18} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                    <ExternalLink
+                      size={18}
+                      className="text-muted-foreground group-hover:text-primary transition-colors"
+                    />
                   </motion.a>
                 ))}
               </div>
