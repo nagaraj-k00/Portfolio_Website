@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion';
-import { Heart, ArrowUp } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Heart, ArrowUp } from "lucide-react";
 
 export const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -20,14 +20,13 @@ export const Footer = () => {
             className="text-2xl font-bold gradient-text cursor-pointer"
             whileHover={{ scale: 1.05 }}
           >
-            {'<Dev />'}
+            {"<Dev />"}
           </motion.a>
 
           {/* Copyright */}
           <p className="text-muted-foreground text-sm flex items-center gap-1">
-            Built with <Heart className="w-4 h-4 text-primary fill-primary" /> by Alex Chen
-            <span className="mx-2">•</span>
-            © {new Date().getFullYear()} All rights reserved
+            Built with <Heart className="w-4 h-4 text-primary fill-primary" /> by Nagaraj Kamatagi
+            <span className="mx-2">•</span>© {new Date().getFullYear()} All rights reserved
           </p>
 
           {/* Back to Top */}
