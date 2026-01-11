@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Download, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCountUp } from '@/hooks/useCountUp';
+import { FloatingShapes } from '@/components/three/FloatingShapes';
 
 const stats = [
   { value: 180, suffix: '+', label: 'Worldwide Clients' },
@@ -16,6 +17,9 @@ export const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+      {/* 3D Background */}
+      <FloatingShapes />
+      
       {/* Left Side - Content */}
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-24">
