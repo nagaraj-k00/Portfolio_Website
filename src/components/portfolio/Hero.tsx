@@ -21,7 +21,7 @@ export const Hero = () => {
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-24">
           {/* Text Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 order-2 md:order-1">
             {/* Greeting Badge */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -98,7 +98,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center order-1 md:order-2"
           >
             {/* Decorative Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-orange-500/20 to-yellow-500/20 rounded-full blur-3xl scale-75" />
