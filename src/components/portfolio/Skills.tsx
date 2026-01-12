@@ -1,21 +1,26 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { Server, Layout, Database, Wrench } from 'lucide-react';
 
 const skillCategories = [
   {
     title: 'Backend',
+    icon: Server,
     skills: ['Java', 'Spring Boot', 'Node.js', 'REST APIs', 'Microservices'],
   },
   {
     title: 'Frontend',
+    icon: Layout,
     skills: ['React', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'HTML/CSS'],
   },
   {
     title: 'Database',
+    icon: Database,
     skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'JPA/Hibernate'],
   },
   {
     title: 'Tools & DevOps',
+    icon: Wrench,
     skills: ['Git', 'Docker', 'AWS', 'Maven', 'Postman', 'VS Code'],
   },
 ];
@@ -52,9 +57,12 @@ export const Skills = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="pro-card p-6"
               >
-                <h3 className="text-lg font-semibold text-foreground mb-4 font-display">
-                  {category.title}
-                </h3>
+                <div className="flex items-center gap-3 mb-4">
+                  <category.icon className="w-5 h-5 text-primary" />
+                  <h3 className="text-lg font-semibold text-foreground font-display">
+                    {category.title}
+                  </h3>
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <span
