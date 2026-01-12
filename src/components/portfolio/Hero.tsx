@@ -98,7 +98,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex items-center justify-center order-first lg:order-last"
+            className="relative flex items-center justify-center"
           >
             {/* Decorative Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-orange-500/20 to-yellow-500/20 rounded-full blur-3xl scale-75" />
