@@ -61,19 +61,19 @@ export const Hero = () => {
               <Button
                 onClick={scrollToProjects}
                 size="lg"
-                className="glow-button bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base font-medium rounded-lg"
+                className="glow-button bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 text-sm font-medium rounded-lg"
               >
-                <ArrowDown className="mr-2 h-5 w-5" />
+                <ArrowDown className="mr-2 h-4 w-4" />
                 View Projects
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-border hover:bg-secondary/50 text-foreground px-8 py-6 text-base font-medium rounded-lg"
+                className="border-border hover:bg-secondary/50 text-foreground px-6 py-3 text-sm font-medium rounded-lg"
                 onClick={() => document.querySelector("#resume")?.scrollIntoView({ behavior: "smooth" })}
               >
-                <Download className="mr-2 h-5 w-5" />
-                Download Resume
+                <Download className="mr-2 h-4 w-4" />
+                Resume
               </Button>
             </motion.div>
 
