@@ -18,12 +18,12 @@ export const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-20">
+    <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-5rem)] py-12 lg:py-16">
+        <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between min-h-[calc(100vh-5rem)] py-12 lg:py-16 gap-8 lg:gap-4">
           
-          {/* Text Content - Left on desktop, below image on mobile */}
-          <div className="space-y-6 text-center lg:text-left order-2 lg:order-1">
+          {/* Text Content - Left side on desktop */}
+          <div className="space-y-6 text-center lg:text-left order-2 lg:order-1 lg:max-w-lg z-10">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -100,12 +100,12 @@ export const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Profile Image - Right on desktop, top on mobile */}
+          {/* Profile Image - Right side on desktop, top on mobile */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative flex items-center justify-center order-1 lg:order-2"
+            className="relative flex items-center justify-center order-1 lg:order-2 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2"
           >
             <div className="relative">
               {/* Floating animated dots */}
@@ -177,7 +177,7 @@ export const Hero = () => {
                   ease: "linear",
                 }}
               >
-                <div className="relative w-48 h-56 sm:w-56 sm:h-64 lg:w-72 lg:h-80 rounded-[1.3rem] overflow-hidden bg-card">
+                <div className="relative w-48 h-56 sm:w-56 sm:h-64 lg:w-80 lg:h-96 rounded-[1.3rem] overflow-hidden bg-card">
                   <img
                     src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg"
                     alt="Nagaraj Kamatagi"
