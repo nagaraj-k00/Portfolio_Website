@@ -145,10 +145,19 @@ export const Navigation = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navItems.length * 0.05 + 0.1 }}
+                className="flex items-center gap-3 mt-2"
               >
                 <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleDarkMode}
+                  className="text-muted-foreground hover:text-primary"
+                >
+                  {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                </Button>
+                <Button
                   onClick={() => scrollToSection('#contact')}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-2"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 flex-1"
                 >
                   Let's Chat
                 </Button>

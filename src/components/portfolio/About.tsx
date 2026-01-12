@@ -90,16 +90,16 @@ export const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.6 }}
-                className="flex flex-wrap items-center gap-8 pt-4"
+                className="grid sm:grid-cols-2 gap-6 pt-4"
               >
-                <div>
-                  <div className="text-muted-foreground text-sm font-medium lowercase mb-2">Interest</div>
+                <div className="space-y-1">
+                  <div className="text-muted-foreground text-sm font-medium lowercase">Interest</div>
                   <div className="text-foreground font-medium">Coding, Open Source, Tech Blogs</div>
                 </div>
                 
-                <div>
-                  <div className="text-muted-foreground text-sm font-medium lowercase mb-2">Social Media</div>
-                  <div className="flex items-center gap-3">
+                <div className="space-y-1">
+                  <div className="text-muted-foreground text-sm font-medium lowercase">Social Media</div>
+                  <div className="flex items-center gap-3 mt-1">
                     {socialLinks.map((social, index) => (
                       <motion.a
                         key={index}
