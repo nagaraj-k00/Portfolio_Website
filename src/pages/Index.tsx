@@ -10,12 +10,10 @@ import { Testimonials } from '@/components/portfolio/Testimonials';
 import { Blog } from '@/components/portfolio/Blog';
 import { Contact } from '@/components/portfolio/Contact';
 import { Footer } from '@/components/portfolio/Footer';
-import { FloatingParticles } from '@/components/ui/FloatingParticles';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      <FloatingParticles />
       <Navigation />
       <Hero />
       <About />
