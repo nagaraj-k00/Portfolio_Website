@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
-import { Download, User } from "lucide-react";
+import { Download, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCountUp } from "@/hooks/useCountUp";
 const stats = [
   { value: 180, suffix: "+", label: "Worldwide Clients" },
-  { value: 590, suffix: "+", label: "Project Done" },
-  { value: 12, suffix: "+", label: "Years Experience" },
+  { value: 10, suffix: "+", label: "Project Done" },
+  { value: 5, suffix: "+", label: "Years Experience" },
 ];
 
 export const Hero = () => {
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToProjects = () => {
+    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -59,12 +59,12 @@ export const Hero = () => {
               className="flex flex-wrap items-center gap-4"
             >
               <Button
-                onClick={scrollToContact}
+                onClick={scrollToProjects}
                 size="lg"
                 className="glow-button bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base font-medium rounded-lg"
               >
-                <User className="mr-2 h-5 w-5" />
-                Hire Me
+                <ArrowDown className="mr-2 h-5 w-5" />
+                View Projects
               </Button>
               <Button
                 variant="outline"
@@ -73,7 +73,7 @@ export const Hero = () => {
                 onClick={() => document.querySelector("#resume")?.scrollIntoView({ behavior: "smooth" })}
               >
                 <Download className="mr-2 h-5 w-5" />
-                Download CV
+                Download Resume
               </Button>
             </motion.div>
 
