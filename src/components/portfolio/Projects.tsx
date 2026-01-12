@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -78,7 +78,10 @@ export const Projects = () => {
     : projects.filter(p => p.category === activeCategory);
 
   return (
-    <section id="projects" className="py-24 relative bg-secondary/30">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+      
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -89,7 +92,7 @@ export const Projects = () => {
           <div className="mb-12">
             <span className="section-badge mb-4">Portfolio</span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display mt-4">
-              Featured Projects
+              Featured <span className="gradient-text">Projects</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl">
               Real-world applications demonstrating problem-solving and technical skills.
@@ -99,18 +102,23 @@ export const Projects = () => {
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2 mb-10">
             {categories.map((category) => (
-              <Button
+              <motion.div
                 key={category}
-                variant={activeCategory === category ? 'default' : 'outline'}
-                onClick={() => setActiveCategory(category)}
-                className={`rounded-lg transition-colors duration-200 ${
-                  activeCategory === category
-                    ? 'bg-primary text-primary-foreground'
-                    : 'border-border text-muted-foreground hover:text-foreground hover:bg-secondary'
-                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {category}
-              </Button>
+                <Button
+                  variant={activeCategory === category ? 'default' : 'outline'}
+                  onClick={() => setActiveCategory(category)}
+                  className={`rounded-xl transition-all duration-300 ${
+                    activeCategory === category
+                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
+                      : 'border-border text-muted-foreground hover:text-foreground hover:bg-secondary hover:border-primary/30'
+                  }`}
+                >
+                  {category}
+                </Button>
+              </motion.div>
             ))}
           </div>
 
@@ -125,52 +133,71 @@ export const Projects = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="pro-card group"
+                  className="pro-card group cursor-pointer"
+                  whileHover={{ y: -5 }}
                 >
                   {/* Image */}
                   <div className="relative aspect-video overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-75"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                     
                     {/* Overlay Links */}
-                    <div className="absolute inset-0 bg-card/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-3">
-                      <a
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/80 to-background/60 flex items-center justify-center gap-4"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <motion.a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-secondary text-foreground rounded-lg text-sm font-medium hover:bg-secondary/80 transition-colors"
+                        className="flex items-center gap-2 px-5 py-2.5 bg-secondary/80 backdrop-blur-sm text-foreground rounded-xl text-sm font-medium hover:bg-secondary transition-colors border border-border"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         <Github size={16} />
                         GitHub
-                      </a>
-                      <a
+                      </motion.a>
+                      <motion.a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
+                        className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         <ExternalLink size={16} />
                         Live Demo
-                      </a>
+                      </motion.a>
+                    </motion.div>
+
+                    {/* Category tag */}
+                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm text-xs font-medium text-foreground border border-border">
+                      {project.category}
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-5">
-                    <h3 className="text-lg font-semibold text-foreground mb-2 font-display">
-                      {project.title}
-                    </h3>
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="text-lg font-semibold text-foreground font-display group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                    </div>
                     <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
                       {project.problem}
                     </p>
                     
                     {/* Result */}
-                    <p className="text-sm text-primary font-medium mb-4">
-                      ↗ {project.result}
+                    <p className="text-sm text-accent font-medium mb-4 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                      {project.result}
                     </p>
 
                     {/* Tech Stack */}
