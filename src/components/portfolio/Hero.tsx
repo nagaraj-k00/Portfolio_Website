@@ -93,49 +93,48 @@ export const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right Side - Hero Image with Name Background */}
+          {/* Right Side - Styled Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:flex items-center justify-center"
           >
-            {/* Background Name Typography */}
-            <div className="absolute inset-0 flex flex-col justify-center items-center overflow-hidden pointer-events-none">
-              <span className="hero-name-bg tracking-tight leading-none">
-                NAGARAJ
-              </span>
-              <span className="hero-name-bg tracking-tight leading-none -mt-20">
-                KAMATAGI
-              </span>
-            </div>
-
-            {/* Gradient Background */}
+            {/* Decorative Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-orange-500/20 to-yellow-500/20 rounded-full blur-3xl scale-75" />
+            
+            {/* Profile Image with Gradient Border */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-orange-500/20 to-yellow-500/20 rounded-full blur-3xl scale-110" />
-              
-              {/* Profile Image Container */}
-              <div className="relative aspect-[4/5] max-w-md mx-auto rounded-2xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80" />
-                <img 
-                  src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg" 
-                  alt="Nagaraj Kamatagi"
-                  className="w-full h-full object-cover object-center"
-                />
-                
-                {/* Gradient Overlay at Bottom */}
-                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-orange-500/30 via-primary/20 to-transparent" />
+              {/* Gradient Border Container */}
+              <div className="relative p-1.5 rounded-[2rem] bg-gradient-to-br from-primary via-orange-500 to-yellow-500 shadow-2xl shadow-primary/30">
+                {/* Inner Container with Image */}
+                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-[1.75rem] overflow-hidden bg-background">
+                  <img 
+                    src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg" 
+                    alt="Nagaraj Kamatagi"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  {/* Subtle Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                </div>
               </div>
 
-              {/* Floating Name Tag */}
+              {/* Floating Decorative Elements */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-card/90 backdrop-blur-sm border border-border px-6 py-3 rounded-lg shadow-xl"
-              >
-                <span className="text-foreground font-semibold">Nagaraj Kamatagi</span>
-              </motion.div>
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-orange-500 shadow-lg"
+              />
+              <motion.div
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-3 -left-3 w-6 h-6 rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 shadow-lg"
+              />
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-1/2 -left-6 w-3 h-3 rounded-full bg-primary/60"
+              />
             </div>
           </motion.div>
         </div>
