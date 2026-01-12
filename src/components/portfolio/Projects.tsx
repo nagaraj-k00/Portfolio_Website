@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { TiltCard } from '@/components/ui/TiltCard';
 
 const categories = ['All', 'Java', 'Full-Stack', 'Security'];
 
@@ -71,6 +72,7 @@ const projects = [
 
 export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   const filteredProjects = activeCategory === 'All'
@@ -123,7 +125,7 @@ export const Projects = () => {
           </div>
 
           {/* Projects Grid */}
-          <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => (
                 <motion.div
@@ -133,82 +135,99 @@ export const Projects = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="pro-card group cursor-pointer"
-                  whileHover={{ y: -5 }}
                 >
-                  {/* Image */}
-                  <div className="relative aspect-video overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-75"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-                    
-                    {/* Overlay Links */}
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/80 to-background/60 flex items-center justify-center gap-4"
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
+                  <TiltCard className="pro-card group cursor-pointer relative">
+                    {/* Image */}
+                    <div 
+                      className="relative aspect-video overflow-hidden rounded-t-2xl"
+                      onMouseEnter={() => setHoveredId(project.id)}
+                      onMouseLeave={() => setHoveredId(null)}
                     >
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-5 py-2.5 bg-secondary/80 backdrop-blur-sm text-foreground rounded-xl text-sm font-medium hover:bg-secondary transition-colors border border-border"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Github size={16} />
-                        GitHub
-                      </motion.a>
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <ExternalLink size={16} />
-                        Live Demo
-                      </motion.a>
-                    </motion.div>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                      
+                      {/* Overlay Links */}
+                      <AnimatePresence>
+                        {hoveredId === project.id && (
+                          <motion.div 
+                            className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/80 to-background/60 flex items-center justify-center gap-4"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <motion.a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-5 py-2.5 bg-secondary/80 backdrop-blur-sm text-foreground rounded-xl text-sm font-medium hover:bg-secondary transition-colors border border-border"
+                              initial={{ y: 20, opacity: 0 }}
+                              animate={{ y: 0, opacity: 1 }}
+                              exit={{ y: 20, opacity: 0 }}
+                              transition={{ delay: 0.1 }}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <Github size={16} />
+                              GitHub
+                            </motion.a>
+                            <motion.a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30"
+                              initial={{ y: 20, opacity: 0 }}
+                              animate={{ y: 0, opacity: 1 }}
+                              exit={{ y: 20, opacity: 0 }}
+                              transition={{ delay: 0.15 }}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <ExternalLink size={16} />
+                              Live Demo
+                            </motion.a>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
 
-                    {/* Category tag */}
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm text-xs font-medium text-foreground border border-border">
-                      {project.category}
+                      {/* Category tag */}
+                      <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm text-xs font-medium text-foreground border border-border">
+                        {project.category}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-5">
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="text-lg font-semibold text-foreground font-display group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
-                      {project.problem}
-                    </p>
-                    
-                    {/* Result */}
-                    <p className="text-sm text-accent font-medium mb-4 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                      {project.result}
-                    </p>
+                    {/* Content */}
+                    <div className="p-5" style={{ transform: 'translateZ(20px)' }}>
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="text-lg font-semibold text-foreground font-display group-hover:text-primary transition-colors">
+                          {project.title}
+                        </h3>
+                        <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+                        {project.problem}
+                      </p>
+                      
+                      {/* Result */}
+                      <p className="text-sm text-accent font-medium mb-4 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                        {project.result}
+                      </p>
 
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.tech.map((tech) => (
-                        <span key={tech} className="tech-badge">
-                          {tech}
-                        </span>
-                      ))}
+                      {/* Tech Stack */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tech.map((tech) => (
+                          <span key={tech} className="tech-badge">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  </TiltCard>
                 </motion.div>
               ))}
             </AnimatePresence>
