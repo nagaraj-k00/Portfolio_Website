@@ -84,13 +84,6 @@
   
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    cursor: none;
-  }
-
-  @media (max-width: 768px) {
-    body {
-      cursor: auto;
-    }
   }
   
   html {
