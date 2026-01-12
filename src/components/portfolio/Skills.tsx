@@ -1,6 +1,40 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Server, Layout, Database, Wrench } from 'lucide-react';
+import { 
+  FaJava, FaNodeJs, FaReact, FaJs, FaHtml5, FaDocker, FaAws, FaGitAlt 
+} from 'react-icons/fa';
+import { 
+  SiSpringboot, SiTypescript, SiTailwindcss, SiMysql, SiPostgresql, 
+  SiMongodb, SiRedis, SiHibernate, SiPostman, SiApachemaven
+} from 'react-icons/si';
+import { TbApi, TbBuildingBank } from 'react-icons/tb';
+import { VscCode } from 'react-icons/vsc';
+import { IconType } from 'react-icons';
+
+const skillIcons: Record<string, IconType> = {
+  'Java': FaJava,
+  'Spring Boot': SiSpringboot,
+  'Node.js': FaNodeJs,
+  'REST APIs': TbApi,
+  'Microservices': TbBuildingBank,
+  'React': FaReact,
+  'JavaScript': FaJs,
+  'TypeScript': SiTypescript,
+  'Tailwind CSS': SiTailwindcss,
+  'HTML/CSS': FaHtml5,
+  'MySQL': SiMysql,
+  'PostgreSQL': SiPostgresql,
+  'MongoDB': SiMongodb,
+  'Redis': SiRedis,
+  'JPA/Hibernate': SiHibernate,
+  'Git': FaGitAlt,
+  'Docker': FaDocker,
+  'AWS': FaAws,
+  'Maven': SiApachemaven,
+  'Postman': SiPostman,
+  'VS Code': VscCode,
+};
 
 const skillCategories = [
   {
@@ -64,14 +98,18 @@ export const Skills = () => {
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="skill-badge"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  {category.skills.map((skill) => {
+                    const SkillIcon = skillIcons[skill];
+                    return (
+                      <span
+                        key={skill}
+                        className="skill-badge flex items-center gap-1.5"
+                      >
+                        {SkillIcon && <SkillIcon className="w-3.5 h-3.5" />}
+                        {skill}
+                      </span>
+                    );
+                  })}
                 </div>
               </motion.div>
             ))}
