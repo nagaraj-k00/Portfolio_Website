@@ -12,28 +12,28 @@ import { TbApi, TbBuildingBank } from 'react-icons/tb';
 import { VscCode } from 'react-icons/vsc';
 import { IconType } from 'react-icons';
 
-const skillIcons: Record<string, IconType> = {
-  'Java': FaJava,
-  'Spring Boot': SiSpringboot,
-  'Node.js': FaNodeJs,
-  'REST APIs': TbApi,
-  'Microservices': TbBuildingBank,
-  'React': FaReact,
-  'JavaScript': FaJs,
-  'TypeScript': SiTypescript,
-  'Tailwind CSS': SiTailwindcss,
-  'HTML/CSS': FaHtml5,
-  'MySQL': SiMysql,
-  'PostgreSQL': SiPostgresql,
-  'MongoDB': SiMongodb,
-  'Redis': SiRedis,
-  'JPA/Hibernate': SiHibernate,
-  'Git': FaGitAlt,
-  'Docker': FaDocker,
-  'AWS': FaAws,
-  'Maven': SiApachemaven,
-  'Postman': SiPostman,
-  'VS Code': VscCode,
+const skillData: Record<string, { icon: IconType; color: string }> = {
+  'Java': { icon: FaJava, color: '#E76F00' },
+  'Spring Boot': { icon: SiSpringboot, color: '#6DB33F' },
+  'Node.js': { icon: FaNodeJs, color: '#339933' },
+  'REST APIs': { icon: TbApi, color: '#FF6B6B' },
+  'Microservices': { icon: TbBuildingBank, color: '#7C3AED' },
+  'React': { icon: FaReact, color: '#61DAFB' },
+  'JavaScript': { icon: FaJs, color: '#F7DF1E' },
+  'TypeScript': { icon: SiTypescript, color: '#3178C6' },
+  'Tailwind CSS': { icon: SiTailwindcss, color: '#06B6D4' },
+  'HTML/CSS': { icon: FaHtml5, color: '#E34F26' },
+  'MySQL': { icon: SiMysql, color: '#4479A1' },
+  'PostgreSQL': { icon: SiPostgresql, color: '#4169E1' },
+  'MongoDB': { icon: SiMongodb, color: '#47A248' },
+  'Redis': { icon: SiRedis, color: '#DC382D' },
+  'JPA/Hibernate': { icon: SiHibernate, color: '#59666C' },
+  'Git': { icon: FaGitAlt, color: '#F05032' },
+  'Docker': { icon: FaDocker, color: '#2496ED' },
+  'AWS': { icon: FaAws, color: '#FF9900' },
+  'Maven': { icon: SiApachemaven, color: '#C71A36' },
+  'Postman': { icon: SiPostman, color: '#FF6C37' },
+  'VS Code': { icon: VscCode, color: '#007ACC' },
 };
 
 const skillCategories = [
@@ -99,13 +99,15 @@ export const Skills = () => {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => {
-                    const SkillIcon = skillIcons[skill];
+                    const skillInfo = skillData[skill];
+                    const SkillIcon = skillInfo?.icon;
+                    const iconColor = skillInfo?.color;
                     return (
                       <span
                         key={skill}
                         className="skill-badge flex items-center gap-1.5"
                       >
-                        {SkillIcon && <SkillIcon className="w-3.5 h-3.5" />}
+                        {SkillIcon && <SkillIcon className="w-3.5 h-3.5" style={{ color: iconColor }} />}
                         {skill}
                       </span>
                     );
