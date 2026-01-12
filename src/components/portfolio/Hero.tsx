@@ -20,9 +20,9 @@ export const Hero = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-20">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-5rem)] py-16">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center justify-between min-h-[calc(100vh-5rem)] py-16">
           {/* Text Content */}
-          <div className="space-y-8 order-2 lg:order-1">
+          <div className="space-y-8 flex-1 max-w-xl">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative flex items-center justify-center order-1 lg:order-2"
+            className="relative flex items-center justify-center flex-shrink-0"
           >
             <div className="relative">
               {/* Subtle glow behind image */}
