@@ -19,7 +19,7 @@ export const Hero = () => {
       
       {/* Left Side - Content */}
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-24">
           {/* Text Content */}
           <div className="space-y-8">
             {/* Greeting Badge */}
