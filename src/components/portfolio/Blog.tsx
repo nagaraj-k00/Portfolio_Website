@@ -1,77 +1,15 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-
-const categories = ['All', 'React', 'Node.js', 'DevOps', 'Career'];
-
-const blogPosts = [
-  {
-    id: 1,
-    title: 'Building Scalable Microservices with Node.js',
-    excerpt: 'Learn how to design and implement a microservices architecture that scales efficiently with your application needs.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop',
-    category: 'Node.js',
-    date: 'Dec 1, 2024',
-    readTime: '8 min read',
-    tags: ['Node.js', 'Microservices', 'Architecture'],
-  },
-  {
-    id: 2,
-    title: 'React Performance Optimization Techniques',
-    excerpt: 'Discover advanced techniques to optimize your React applications for better performance and user experience.',
-    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop',
-    category: 'React',
-    date: 'Nov 25, 2024',
-    readTime: '6 min read',
-    tags: ['React', 'Performance', 'Optimization'],
-  },
-  {
-    id: 3,
-    title: 'CI/CD Pipeline Best Practices',
-    excerpt: 'A comprehensive guide to setting up robust CI/CD pipelines for your development workflow.',
-    image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&auto=format&fit=crop',
-    category: 'DevOps',
-    date: 'Nov 18, 2024',
-    readTime: '10 min read',
-    tags: ['DevOps', 'CI/CD', 'Automation'],
-  },
-  {
-    id: 4,
-    title: 'How I Landed My Dream Job as a Developer',
-    excerpt: 'My journey from bootcamp graduate to senior developer at a top tech company, and lessons learned along the way.',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop',
-    category: 'Career',
-    date: 'Nov 10, 2024',
-    readTime: '5 min read',
-    tags: ['Career', 'Tips', 'Growth'],
-  },
-  {
-    id: 5,
-    title: 'Understanding React Server Components',
-    excerpt: 'A deep dive into React Server Components and how they change the way we build web applications.',
-    image: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop',
-    category: 'React',
-    date: 'Nov 5, 2024',
-    readTime: '7 min read',
-    tags: ['React', 'Server Components', 'Next.js'],
-  },
-  {
-    id: 6,
-    title: 'Docker for Development: A Practical Guide',
-    excerpt: 'Learn how to use Docker to create consistent development environments across your team.',
-    image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&auto=format&fit=crop',
-    category: 'DevOps',
-    date: 'Oct 28, 2024',
-    readTime: '9 min read',
-    tags: ['Docker', 'DevOps', 'Development'],
-  },
-];
+import { blogPosts, categories } from '@/data/blogPosts';
 
 export const Blog = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const [activeCategory, setActiveCategory] = useState('All');
+  const navigate = useNavigate();
 
   const filteredPosts = activeCategory === 'All'
     ? blogPosts
@@ -127,6 +65,7 @@ export const Blog = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
+                  onClick={() => navigate(`/blog/${post.id}`)}
                   className="glass-card rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 group cursor-pointer"
                 >
                   {/* Image */}
