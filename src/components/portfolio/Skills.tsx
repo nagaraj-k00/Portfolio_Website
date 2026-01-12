@@ -1,7 +1,6 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Code, Palette, Layers } from 'lucide-react';
-import { useRef } from 'react';
 
 const services = [
   {
@@ -37,25 +36,9 @@ const skillsWithProgress = [
 
 export const Skills = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const sectionRef = useRef<HTMLElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
 
   return (
-    <section ref={sectionRef} id="skills" className="py-24 relative overflow-hidden">
-      {/* Parallax Background Elements */}
-      <motion.div 
-        style={{ y: backgroundY }}
-        className="absolute inset-0 pointer-events-none"
-      >
-        <div className="absolute top-10 right-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
-      </motion.div>
+    <section id="skills" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}

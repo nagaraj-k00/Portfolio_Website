@@ -1,8 +1,7 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Download, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCountUp } from '@/hooks/useCountUp';
-import { useRef } from 'react';
 
 const stats = [
   { value: 180, suffix: '+', label: 'Worldwide Clients' },
@@ -11,38 +10,18 @@ const stats = [
 ];
 
 export const Hero = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
   const scrollToContact = () => {
     document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Parallax Background Elements */}
-      <motion.div 
-        style={{ y: backgroundY }}
-        className="absolute inset-0 pointer-events-none"
-      >
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-yellow-500/5 rounded-full blur-3xl" />
-      </motion.div>
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       
       {/* Left Side - Content */}
-      <motion.div style={{ y: contentY, opacity }} className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-24">
           {/* Text Content */}
-          <motion.div style={{ y: contentY }} className="space-y-8 order-2 md:order-1">
+          <div className="space-y-8 order-2 md:order-1">
             {/* Greeting Badge */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -112,14 +91,13 @@ export const Hero = () => {
                 <StatItem key={stat.label} stat={stat} index={index} />
               ))}
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Right Side - Styled Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            style={{ y: imageY }}
             className="relative flex items-center justify-center order-1 md:order-2"
           >
             {/* Decorative Background Glow */}
@@ -160,7 +138,7 @@ export const Hero = () => {
             </div>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

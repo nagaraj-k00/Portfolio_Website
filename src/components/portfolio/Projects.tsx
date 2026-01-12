@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight, Folder } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
@@ -72,31 +72,13 @@ const projects = [
 export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-  const cardsY = useTransform(scrollYProgress, [0, 0.5, 1], ["50px", "0px", "-30px"]);
 
   const filteredProjects = activeCategory === 'All'
     ? projects
     : projects.filter(p => p.category === activeCategory);
 
   return (
-    <section ref={sectionRef} id="projects" className="py-24 relative overflow-hidden bg-secondary/20">
-      {/* Parallax Background Elements */}
-      <motion.div 
-        style={{ y: backgroundY }}
-        className="absolute inset-0 pointer-events-none"
-      >
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-orange-500/5 rounded-full blur-3xl" />
-      </motion.div>
-      
+    <section id="projects" className="py-24 relative overflow-hidden bg-secondary/20">
       <div className="container mx-auto px-6 lg:px-12 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -143,7 +125,6 @@ export const Projects = () => {
           {/* Projects Grid */}
           <motion.div 
             layout
-            style={{ y: cardsY }}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence mode="popLayout">
