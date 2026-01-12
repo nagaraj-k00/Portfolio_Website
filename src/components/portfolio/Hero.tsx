@@ -20,12 +20,85 @@ export const Hero = () => {
       {/* Left Side - Content */}
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-24">
-          {/* Left Side - Profile Image (Desktop) / Top (Mobile) */}
+          {/* Text Content */}
+          <div className="space-y-8">
+            {/* Greeting Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/30 bg-primary/5"
+            >
+              <span className="text-primary font-medium">Hi! I'm Nagaraj Kamatagi</span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight font-display"
+            >
+              Freelance{' '}
+              <span className="text-primary">Java & Full Stack</span>{' '}
+              Developer
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-muted-foreground text-lg max-w-lg leading-relaxed"
+            >
+              Building scalable web applications with modern technologies. Strong in REST API development, database design, and problem-solving.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <Button
+                onClick={scrollToContact}
+                size="lg"
+                className="glow-button bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base font-medium rounded-lg"
+              >
+                <User className="mr-2 h-5 w-5" />
+                Hire Me
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-border hover:bg-secondary/50 text-foreground px-8 py-6 text-base font-medium rounded-lg"
+                onClick={() => document.querySelector('#resume')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Download CV
+              </Button>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex items-center gap-12 pt-8"
+            >
+              {stats.map((stat, index) => (
+                <StatItem key={stat.label} stat={stat} index={index} />
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right Side - Styled Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex items-center justify-center order-first"
+            className="relative flex items-center justify-center"
           >
             {/* Decorative Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-orange-500/20 to-yellow-500/20 rounded-full blur-3xl scale-75" />
@@ -64,79 +137,6 @@ export const Hero = () => {
               />
             </div>
           </motion.div>
-
-          {/* Right Side - Text Content (Desktop) / Bottom (Mobile) */}
-          <div className="space-y-8 text-center lg:text-left">
-            {/* Greeting Badge */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/30 bg-primary/5"
-            >
-              <span className="text-primary font-medium">Hi! I'm Nagaraj Kamatagi</span>
-            </motion.div>
-
-            {/* Main Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight font-display"
-            >
-              Freelance{' '}
-              <span className="text-primary">Java & Full Stack</span>{' '}
-              Developer
-            </motion.h1>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-muted-foreground text-lg max-w-lg leading-relaxed mx-auto lg:mx-0"
-            >
-              Building scalable web applications with modern technologies. Strong in REST API development, database design, and problem-solving.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
-            >
-              <Button
-                onClick={scrollToContact}
-                size="lg"
-                className="glow-button bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base font-medium rounded-lg"
-              >
-                <User className="mr-2 h-5 w-5" />
-                Hire Me
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-border hover:bg-secondary/50 text-foreground px-8 py-6 text-base font-medium rounded-lg"
-                onClick={() => document.querySelector('#resume')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Download CV
-              </Button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex items-center justify-center lg:justify-start gap-8 lg:gap-12 pt-8"
-            >
-              {stats.map((stat, index) => (
-                <StatItem key={stat.label} stat={stat} index={index} />
-              ))}
-            </motion.div>
-          </div>
         </div>
       </div>
     </section>
