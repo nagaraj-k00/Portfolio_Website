@@ -98,7 +98,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:flex items-center justify-center"
+            className="relative flex items-center justify-center order-first lg:order-last"
           >
             {/* Decorative Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-orange-500/20 to-yellow-500/20 rounded-full blur-3xl scale-75" />
@@ -106,9 +106,9 @@ export const Hero = () => {
             {/* Profile Image with Gradient Border */}
             <div className="relative">
               {/* Gradient Border Container */}
-              <div className="relative p-1.5 rounded-[2rem] bg-gradient-to-br from-primary via-orange-500 to-yellow-500 shadow-2xl shadow-primary/30">
+              <div className="relative p-1 sm:p-1.5 rounded-[1.5rem] sm:rounded-[2rem] bg-gradient-to-br from-primary via-orange-500 to-yellow-500 shadow-2xl shadow-primary/30">
                 {/* Inner Container with Image */}
-                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-[1.75rem] overflow-hidden bg-background">
+                <div className="relative w-48 h-56 sm:w-64 sm:h-72 md:w-72 md:h-80 lg:w-80 lg:h-96 rounded-[1.25rem] sm:rounded-[1.75rem] overflow-hidden bg-background">
                   <img 
                     src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg" 
                     alt="Nagaraj Kamatagi"
@@ -123,17 +123,17 @@ export const Hero = () => {
               <motion.div
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-orange-500 shadow-lg"
+                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-primary to-orange-500 shadow-lg"
               />
               <motion.div
                 animate={{ y: [5, -5, 5] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-3 -left-3 w-6 h-6 rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 shadow-lg"
+                className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 shadow-lg"
               />
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/2 -left-6 w-3 h-3 rounded-full bg-primary/60"
+                className="absolute top-1/2 -left-4 sm:-left-6 w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-primary/60"
               />
             </div>
           </motion.div>
