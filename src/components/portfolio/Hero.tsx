@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const highlights = [
-  "5+ years building enterprise applications",
-  "Spring Boot & React specialist",
-  "Remote-ready, timezone flexible",
+const stats = [
+  { value: "5+", label: "Years Experience" },
+  { value: "20+", label: "Projects Done" },
+  { value: "15+", label: "Happy Clients" },
 ];
 
 export const Hero = () => {
-  const scrollToProjects = () => {
-    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToContact = () => {
+    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToResume = () => {
@@ -18,20 +18,22 @@ export const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center pt-20">
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
-        <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between min-h-[calc(100vh-5rem)] py-12 lg:py-16 gap-8 lg:gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[calc(100vh-5rem)] py-12 lg:py-16">
           
-          {/* Text Content - Left side on desktop */}
-          <div className="space-y-6 text-center lg:text-left order-2 lg:order-1 lg:max-w-lg z-10">
-            {/* Badge */}
+          {/* Text Content - Left side on desktop, below image on mobile */}
+          <div className="space-y-6 text-center lg:text-left order-2 lg:order-1">
+            {/* Intro Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="section-badge inline-block"
+              className="inline-block"
             >
-              Available for opportunities
+              <span className="section-badge">
+                Hi! I'm Nagaraj Kamatagi
+              </span>
             </motion.div>
 
             {/* Main Heading */}
@@ -41,9 +43,12 @@ export const Hero = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight font-display">
-                Java & Full Stack
+                Freelance{" "}
+                <span className="gradient-text">Java &</span>
                 <br />
-                <span className="gradient-text">Developer</span>
+                <span className="gradient-text">Full Stack</span>
+                <br />
+                Developer
               </h1>
             </motion.div>
 
@@ -52,41 +57,25 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-muted-foreground text-lg max-w-xl leading-relaxed mx-auto lg:mx-0"
+              className="text-muted-foreground text-lg max-w-md leading-relaxed mx-auto lg:mx-0"
             >
-              I build scalable backend systems and intuitive web interfaces. 
-              Specializing in Spring Boot, React, and cloud-native architectures.
+              Building scalable web applications with modern technologies. Strong in REST API development, database design, and problem-solving.
             </motion.p>
-
-            {/* Highlights */}
-            <motion.ul
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="space-y-3 inline-block text-left"
-            >
-              {highlights.map((item, index) => (
-                <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  {item}
-                </li>
-              ))}
-            </motion.ul>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4"
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2"
             >
               <Button
-                onClick={scrollToProjects}
+                onClick={scrollToContact}
                 size="lg"
                 className="glow-button bg-primary hover:bg-primary/90 text-primary-foreground px-6 h-12 text-base font-medium rounded-xl"
               >
-                View Projects
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <Users className="mr-2 h-4 w-4" />
+                Hire Me
               </Button>
               <Button
                 variant="outline"
@@ -95,8 +84,27 @@ export const Hero = () => {
                 onClick={scrollToResume}
               >
                 <Download className="mr-2 h-4 w-4" />
-                Download Resume
+                Download CV
               </Button>
+            </motion.div>
+
+            {/* Stats Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex items-center justify-center lg:justify-start gap-8 pt-6"
+            >
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center lg:text-left">
+                  <div className="text-2xl md:text-3xl font-bold text-foreground">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </motion.div>
           </div>
 
@@ -105,7 +113,7 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative flex items-center justify-center order-1 lg:order-2 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2"
+            className="relative flex items-center justify-center order-1 lg:order-2"
           >
             <div className="relative">
               {/* Floating animated dots */}
@@ -177,7 +185,7 @@ export const Hero = () => {
                   ease: "linear",
                 }}
               >
-                <div className="relative w-48 h-56 sm:w-56 sm:h-64 lg:w-80 lg:h-96 rounded-[1.3rem] overflow-hidden bg-card">
+                <div className="relative w-56 h-64 sm:w-64 sm:h-72 lg:w-80 lg:h-96 rounded-[1.3rem] overflow-hidden bg-card">
                   <img
                     src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg"
                     alt="Nagaraj Kamatagi"
