@@ -4,11 +4,10 @@ import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const navItems = [
-  { label: 'Home', href: '#hero' },
-  { label: 'About Me', href: '#about' },
-  { label: 'Services', href: '#skills' },
+  { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Client', href: '#testimonials' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Blog', href: '#blog' },
 ];
 
@@ -18,9 +17,12 @@ export const Navigation = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    // Set dark mode as default
+    document.documentElement.classList.add('dark');
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -32,7 +34,6 @@ export const Navigation = () => {
 
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
-    // Small delay to allow mobile menu to close before scrolling
     setTimeout(() => {
       const element = document.querySelector(href);
       element?.scrollIntoView({ behavior: 'smooth' });
@@ -43,63 +44,58 @@ export const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'glass-nav py-4' 
-          : 'py-6 bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        isScrolled ? 'glass-nav py-3' : 'py-5 bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
+      <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <motion.a
+        <a
           href="#hero"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection('#hero');
           }}
           className="flex items-center gap-2 cursor-pointer"
-          whileHover={{ scale: 1.02 }}
         >
-          <div className="w-10 h-10 glass-icon flex items-center justify-center">
-            <span className="text-primary font-bold text-lg">N</span>
+          <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-lg">N</span>
           </div>
-          <span className="text-xl font-bold text-foreground hidden sm:block">Nagaraj</span>
-        </motion.a>
+          <span className="text-lg font-semibold text-foreground hidden sm:block">Nagaraj</span>
+        </a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <motion.a
+            <a
               key={item.label}
               href={item.href}
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(item.href);
               }}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer font-medium"
-              whileHover={{ y: -2 }}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
             >
               {item.label}
-            </motion.a>
+            </a>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-4">
-          {/* Dark Mode Toggle */}
+        <div className="hidden md:flex items-center gap-3">
           <Button
             variant="ghost"
             size="icon"
             onClick={toggleDarkMode}
-            className="text-muted-foreground hover:text-primary"
+            className="text-muted-foreground hover:text-foreground"
           >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
           </Button>
 
           <Button
             onClick={() => scrollToSection('#contact')}
-            className="glass-button hover:bg-primary hover:border-primary hover:text-primary-foreground text-foreground transition-all duration-300 rounded-xl px-6"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-5 h-9"
           >
-            Let's Chat
+            Contact
           </Button>
         </div>
 
@@ -110,7 +106,7 @@ export const Navigation = () => {
           className="md:hidden text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </Button>
       </div>
 
@@ -121,47 +117,38 @@ export const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-card border-t border-border/30 mt-4 mx-4 rounded-2xl"
+            className="md:hidden border-t border-border bg-background mt-3"
           >
-            <div className="flex flex-col p-6 gap-4">
-              {navItems.map((item, index) => (
-                <motion.a
+            <div className="flex flex-col p-4 gap-1">
+              {navItems.map((item) => (
+                <a
                   key={item.label}
                   href={item.href}
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="text-muted-foreground hover:text-primary transition-colors py-2 cursor-pointer font-medium"
-                  whileHover={{ x: 10 }}
+                  className="text-muted-foreground hover:text-foreground transition-colors py-3 px-3 rounded-lg hover:bg-secondary"
                 >
                   {item.label}
-                </motion.a>
+                </a>
               ))}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navItems.length * 0.05 + 0.1 }}
-                className="flex items-center gap-3 mt-2"
-              >
+              <div className="flex items-center gap-3 mt-3 pt-3 border-t border-border">
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={toggleDarkMode}
-                  className="text-muted-foreground hover:text-primary"
+                  className="text-muted-foreground hover:text-foreground"
                 >
-                  {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                  {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
                 </Button>
                 <Button
                   onClick={() => scrollToSection('#contact')}
                   className="bg-primary text-primary-foreground hover:bg-primary/90 flex-1"
                 >
-                  Let's Chat
+                  Contact
                 </Button>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         )}

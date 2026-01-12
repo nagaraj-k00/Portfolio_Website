@@ -1,162 +1,129 @@
 import { motion } from "framer-motion";
-import { Download, User } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useCountUp } from "@/hooks/useCountUp";
 
-const stats = [
-  { value: 180, suffix: "+", label: "Worldwide Clients" },
-  { value: 590, suffix: "+", label: "Project Done" },
-  { value: 12, suffix: "+", label: "Years Experience" },
+const highlights = [
+  "5+ years building enterprise applications",
+  "Spring Boot & React specialist",
+  "Remote-ready, timezone flexible",
 ];
 
 export const Hero = () => {
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToProjects = () => {
+    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToResume = () => {
+    document.querySelector("#resume")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Left Side - Content */}
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-24">
+    <section id="hero" className="relative min-h-screen flex items-center pt-20">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-5rem)] py-16">
           {/* Text Content */}
-          <div className="space-y-8 order-2 md:order-1">
-            {/* Greeting Badge */}
+          <div className="space-y-8 order-2 lg:order-1">
+            {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/30 bg-primary/5"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="section-badge"
             >
-              <span className="text-primary font-medium">Hi! I'm Nagaraj Kamatagi</span>
+              Available for opportunities
             </motion.div>
 
             {/* Main Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight font-display"
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
-              {" "}
-              <span className="text-primary">Java & Full Stack</span> Developer
-            </motion.h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight font-display">
+                Java & Full Stack
+                <br />
+                <span className="gradient-text">Developer</span>
+              </h1>
+            </motion.div>
 
             {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-muted-foreground text-lg max-w-lg leading-relaxed"
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-muted-foreground text-lg max-w-xl leading-relaxed"
             >
-              Building scalable web applications with modern technologies. Strong in REST API development, database
-              design, and problem-solving.
+              I build scalable backend systems and intuitive web interfaces. 
+              Specializing in Spring Boot, React, and cloud-native architectures.
             </motion.p>
+
+            {/* Highlights */}
+            <motion.ul
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="space-y-3"
+            >
+              {highlights.map((item, index) => (
+                <li key={index} className="flex items-center gap-3 text-muted-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  {item}
+                </li>
+              ))}
+            </motion.ul>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-wrap items-center gap-4"
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap items-center gap-4 pt-4"
             >
               <Button
-                onClick={scrollToContact}
+                onClick={scrollToProjects}
                 size="lg"
-                className="glow-button bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base font-medium rounded-lg"
+                className="glow-button bg-primary hover:bg-primary/90 text-primary-foreground px-6 h-12 text-base font-medium rounded-xl"
               >
-                <User className="mr-2 h-5 w-5" />
-                Hire Me
+                View Projects
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-border hover:bg-secondary/50 text-foreground px-8 py-6 text-base font-medium rounded-lg"
-                onClick={() => document.querySelector("#resume")?.scrollIntoView({ behavior: "smooth" })}
+                className="border-border hover:bg-secondary text-foreground px-6 h-12 text-base font-medium rounded-xl"
+                onClick={scrollToResume}
               >
-                <Download className="mr-2 h-5 w-5" />
-                Download CV
+                <Download className="mr-2 h-4 w-4" />
+                Download Resume
               </Button>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex items-center gap-12 pt-8"
-            >
-              {stats.map((stat, index) => (
-                <StatItem key={stat.label} stat={stat} index={index} />
-              ))}
             </motion.div>
           </div>
 
-          {/* Right Side - Styled Profile Image */}
+          {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex items-center justify-center order-1 md:order-2"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative flex items-center justify-center order-1 lg:order-2"
           >
-            {/* Decorative Background Glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-orange-500/20 to-yellow-500/20 rounded-full blur-3xl scale-75" />
-
-            {/* Profile Image with Gradient Border */}
             <div className="relative">
-              {/* Gradient Border Container */}
-              <div className="relative p-1 sm:p-1.5 rounded-[1.5rem] sm:rounded-[2rem] bg-gradient-to-br from-primary via-orange-500 to-yellow-500 shadow-2xl shadow-primary/30">
-                {/* Inner Container with Image */}
-                <div className="relative w-48 h-56 sm:w-64 sm:h-72 md:w-72 md:h-80 lg:w-80 lg:h-96 rounded-[1.25rem] sm:rounded-[1.75rem] overflow-hidden bg-background">
+              {/* Subtle glow behind image */}
+              <div className="absolute inset-0 bg-primary/10 rounded-3xl blur-3xl scale-90" />
+              
+              {/* Image container with border */}
+              <div className="relative p-1 rounded-3xl bg-gradient-to-br from-primary/30 via-primary/10 to-transparent">
+                <div className="relative w-64 h-72 sm:w-72 sm:h-80 md:w-80 md:h-96 rounded-[1.4rem] overflow-hidden bg-card">
                   <img
                     src="https://i.postimg.cc/vHV7BBMJ/IMG-20250930-161945.jpg"
                     alt="Nagaraj Kamatagi"
                     className="w-full h-full object-cover object-top"
                   />
-                  {/* Subtle Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                 </div>
               </div>
-
-              {/* Floating Decorative Elements */}
-              <motion.div
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-primary to-orange-500 shadow-lg"
-              />
-              <motion.div
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 shadow-lg"
-              />
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/2 -left-4 sm:-left-6 w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-primary/60"
-              />
             </div>
           </motion.div>
         </div>
       </div>
     </section>
-  );
-};
-
-const StatItem = ({ stat, index }: { stat: (typeof stats)[0]; index: number }) => {
-  const count = useCountUp(stat.value, 2000, true);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.7 + index * 0.1 }}
-      className="text-center"
-    >
-      <div className="text-3xl md:text-4xl font-bold text-foreground">
-        {count}
-        {stat.suffix}
-      </div>
-      <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
-    </motion.div>
   );
 };

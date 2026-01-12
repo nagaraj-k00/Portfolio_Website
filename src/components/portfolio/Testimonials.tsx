@@ -8,42 +8,32 @@ const testimonials = [
   {
     id: 1,
     name: 'Product Manager',
-    role: 'SaaS Startup',
-    image: '👨‍💻',
-    content: 'Nagaraj was easy to work with and understood our requirements clearly. He delivered the project on time and the code quality was solid. Communication was smooth throughout the project.',
-    rating: 5,
+    company: 'SaaS Startup',
+    content: 'Nagaraj was easy to work with and understood our requirements clearly. He delivered the project on time and the code quality was solid. Communication was smooth throughout.',
   },
   {
     id: 2,
     name: 'CTO',
-    role: 'FinTech Company',
-    image: '👨‍💼',
+    company: 'FinTech Company',
     content: 'We hired Nagaraj for backend development using Java and Spring Boot. He quickly adapted to our existing system and fixed performance issues we were struggling with.',
-    rating: 5,
   },
   {
     id: 3,
     name: 'Founder',
-    role: 'E-commerce Platform',
-    image: '👩‍💼',
+    company: 'E-commerce Platform',
     content: "What I appreciated most was his problem-solving approach. He didn't just implement features, he suggested better solutions that improved the overall system.",
-    rating: 5,
   },
   {
     id: 4,
     name: 'Operations Lead',
-    role: 'Logistics Firm',
-    image: '📦',
-    content: "Nagaraj delivered exactly what we needed and was responsive even after project completion. I'd definitely work with him again for future development work.",
-    rating: 5,
+    company: 'Logistics Firm',
+    content: "Nagaraj delivered exactly what we needed and was responsive even after project completion. I'd work with him again for future development work.",
   },
   {
     id: 5,
-    name: 'Client',
-    role: 'Enterprise Web Application',
-    image: '🏢',
+    name: 'Technical Lead',
+    company: 'Enterprise Application',
     content: 'Reliable, skilled, and professional. Nagaraj handled both frontend and backend tasks efficiently and kept us updated at every stage.',
-    rating: 5,
   },
 ];
 
@@ -51,78 +41,49 @@ export const Testimonials = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const next = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
     <section id="testimonials" className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <p className="text-primary font-mono mb-2">{'// What People Say'}</p>
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-              Testimonials
+          <div className="mb-12">
+            <span className="section-badge mb-4">Testimonials</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display mt-4">
+              What Clients Say
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Feedback from mentors, colleagues, and clients I've worked with
-            </p>
           </div>
 
-          {/* Testimonial Carousel */}
-          <div className="max-w-4xl mx-auto relative">
+          {/* Testimonial Card */}
+          <div className="max-w-3xl mx-auto">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.3 }}
-                className="glass-card rounded-2xl p-8 md:p-12 relative"
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 0.25 }}
+                className="pro-card p-8 md:p-10 relative"
               >
-                {/* Quote Icon */}
-                <div className="absolute top-6 right-6 text-primary/20">
-                  <Quote size={60} />
-                </div>
+                <Quote className="absolute top-6 right-6 text-primary/10" size={48} />
 
-                <div className="relative z-10">
-                  {/* Rating Stars */}
-                  <div className="flex gap-1 mb-6">
-                    {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                      <span key={i} className="text-yellow-400 text-xl">★</span>
-                    ))}
-                  </div>
+                <p className="text-lg text-foreground mb-8 leading-relaxed relative z-10">
+                  "{testimonials[currentIndex].content}"
+                </p>
 
-                  {/* Content */}
-                  <p className="text-lg md:text-xl text-foreground mb-8 leading-relaxed italic">
-                    "{testimonials[currentIndex].content}"
+                <div>
+                  <p className="font-semibold text-foreground">
+                    {testimonials[currentIndex].name}
                   </p>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-3xl">
-                      {testimonials[currentIndex].image}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">
-                        {testimonials[currentIndex].name}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonials[currentIndex].role}
-                      </p>
-                    </div>
-                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonials[currentIndex].company}
+                  </p>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -133,20 +94,19 @@ export const Testimonials = () => {
                 variant="outline"
                 size="icon"
                 onClick={prev}
-                className="rounded-full border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50"
+                className="rounded-full border-border text-muted-foreground hover:text-foreground hover:border-primary/50"
               >
                 <ChevronLeft size={20} />
               </Button>
 
-              {/* Dots */}
               <div className="flex gap-2">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
                       index === currentIndex
-                        ? 'bg-primary w-8'
+                        ? 'bg-primary w-6'
                         : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                     }`}
                   />
@@ -157,7 +117,7 @@ export const Testimonials = () => {
                 variant="outline"
                 size="icon"
                 onClick={next}
-                className="rounded-full border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50"
+                className="rounded-full border-border text-muted-foreground hover:text-foreground hover:border-primary/50"
               >
                 <ChevronRight size={20} />
               </Button>
