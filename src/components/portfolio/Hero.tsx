@@ -2,12 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const highlights = [
-  "5+ years building enterprise applications",
-  "Spring Boot & React specialist",
-  "Remote-ready, timezone flexible",
-];
-
 export const Hero = () => {
   const scrollToProjects = () => {
     document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
@@ -21,16 +15,17 @@ export const Hero = () => {
     <section id="hero" className="relative min-h-screen flex items-center pt-20">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-5rem)] py-16">
-          {/* Text Content */}
-          <div className="space-y-8 order-2 lg:order-1">
-            {/* Badge */}
+          {/* Text Content - Left Side */}
+          <div className="space-y-6 order-2 lg:order-1">
+            {/* Intro Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="section-badge"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium"
             >
-              Available for opportunities
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              Hi! I'm Nagaraj Kamatagi
             </motion.div>
 
             {/* Main Heading */}
@@ -40,9 +35,12 @@ export const Hero = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight font-display">
-                Java & Full Stack
+                Freelance{" "}
+                <span className="gradient-text">Java &</span>
                 <br />
-                <span className="gradient-text">Developer</span>
+                <span className="gradient-text">Full Stack</span>
+                <br />
+                Developer
               </h1>
             </motion.div>
 
@@ -51,33 +49,18 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-muted-foreground text-lg max-w-xl leading-relaxed"
+              className="text-muted-foreground text-lg max-w-md leading-relaxed"
             >
-              I build scalable backend systems and intuitive web interfaces. 
-              Specializing in Spring Boot, React, and cloud-native architectures.
+              Building scalable web applications with modern technologies. 
+              Strong in REST API development, database design, and problem-solving.
             </motion.p>
-
-            {/* Highlights */}
-            <motion.ul
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="space-y-3"
-            >
-              {highlights.map((item, index) => (
-                <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  {item}
-                </li>
-              ))}
-            </motion.ul>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-4 pt-4"
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-wrap items-center gap-4 pt-2"
             >
               <Button
                 onClick={scrollToProjects}
