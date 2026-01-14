@@ -61,15 +61,15 @@ export const Navigation = () => {
         isScrolled ? 'glass-nav py-3' : 'py-5 bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
+      <div className="container mx-auto px-6 grid grid-cols-3 items-center">
+        {/* Left - Logo */}
         <motion.a
           href="#hero"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection('#hero');
           }}
-          className="flex items-center gap-2 cursor-pointer group"
+          className="flex items-center gap-2 cursor-pointer group justify-self-start"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -84,37 +84,40 @@ export const Navigation = () => {
           </span>
         </motion.a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1 bg-secondary/50 backdrop-blur-sm rounded-full px-2 py-1.5 border border-border">
-          {navItems.map((item) => (
-            <motion.a
-              key={item.label}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection(item.href);
-              }}
-              className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 cursor-pointer ${
-                activeSection === item.href.slice(1)
-                  ? 'text-primary-foreground'
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {activeSection === item.href.slice(1) && (
-                <motion.div
-                  layoutId="activeNav"
-                  className="absolute inset-0 bg-primary rounded-full"
-                  transition={{ type: "spring", duration: 0.5 }}
-                />
-              )}
-              <span className="relative z-10">{item.label}</span>
-            </motion.a>
-          ))}
+        {/* Center - Navigation */}
+        <div className="hidden md:flex items-center justify-center">
+          <div className="flex items-center gap-1 bg-secondary/50 backdrop-blur-sm rounded-full px-2 py-1.5 border border-border">
+            {navItems.map((item) => (
+              <motion.a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
+                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 cursor-pointer ${
+                  activeSection === item.href.slice(1)
+                    ? 'text-primary-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {activeSection === item.href.slice(1) && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute inset-0 bg-primary rounded-full"
+                    transition={{ type: "spring", duration: 0.5 }}
+                  />
+                )}
+                <span className="relative z-10">{item.label}</span>
+              </motion.a>
+            ))}
+          </div>
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        {/* Right - Actions */}
+        <div className="hidden md:flex items-center gap-3 justify-self-end">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
               variant="ghost"
