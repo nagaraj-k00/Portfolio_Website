@@ -16,6 +16,7 @@ export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState('');
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
@@ -24,6 +25,11 @@ export const Navigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Calculate scroll progress
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+      setScrollProgress(progress);
 
       const sections = navItems.map(item => item.href.slice(1));
       for (const section of sections.reverse()) {
@@ -62,6 +68,14 @@ export const Navigation = () => {
           : 'py-4 bg-transparent'
       }`}
     >
+      {/* Scroll Progress Indicator */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary via-purple-500 to-accent"
+        style={{ width: `${scrollProgress}%` }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isScrolled ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+      />
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Left - Logo & Name */}
