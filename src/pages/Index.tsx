@@ -10,6 +10,7 @@ import { Testimonials } from '@/components/portfolio/Testimonials';
 import { Blog } from '@/components/portfolio/Blog';
 import { Contact } from '@/components/portfolio/Contact';
 import { Footer } from '@/components/portfolio/Footer';
+import { BackToTop } from '@/components/ui/BackToTop';
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
       <Blog />
       <Contact />
       <Footer />
+      <BackToTop />
     </div>
   );
 };
