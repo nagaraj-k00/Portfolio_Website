@@ -8,6 +8,7 @@ import { Education } from '@/components/portfolio/Education';
 import { Resume } from '@/components/portfolio/Resume';
 import { Testimonials } from '@/components/portfolio/Testimonials';
 import { Blog } from '@/components/portfolio/Blog';
+import { LeetCodeStats } from '@/components/portfolio/LeetCodeStats';
 import { Contact } from '@/components/portfolio/Contact';
 import { Footer } from '@/components/portfolio/Footer';
 import { BackToTop } from '@/components/ui/BackToTop';
@@ -25,6 +26,7 @@ const Index = () => {
       <Resume />
       <Testimonials />
       <Blog />
+      <LeetCodeStats />
       <Contact />
       <Footer />
       <BackToTop />
