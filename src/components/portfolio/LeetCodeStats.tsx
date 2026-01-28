@@ -57,7 +57,11 @@ export const LeetCodeStats = () => {
       // Contest data might not be available for all users
       if (contestRes.ok) {
         const contestData = await contestRes.json();
-        if (contestData && !contestData.error) {
+        // Only set contest stats if the required fields exist
+        if (contestData && 
+            !contestData.error && 
+            contestData.rating !== undefined &&
+            contestData.globalRanking !== undefined) {
           setContestStats(contestData);
         }
       }
