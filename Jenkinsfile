@@ -25,5 +25,13 @@ pipeline {
                 bat 'echo Running project...'
             }
         }
+        stage('Deploy') {
+    steps {
+        bat '''
+        echo Deploying project...
+        xcopy /E /I /Y * C:\\deploy\\portfolio
+        '''
+    }
+}
     }
 }
