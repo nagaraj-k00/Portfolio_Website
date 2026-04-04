@@ -8,11 +8,7 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                bat 'echo Building project...'
-            }
-        }
+       
 
         stage('Test') {
             steps {
@@ -25,13 +21,23 @@ pipeline {
                 bat 'echo Running project...'
             }
         }
-        stage('Deploy') {
+
+        stage('Build') {
+    steps {
+        bat 'npm install'
+        bat 'npm run build'
+    }
+}
+
+stage('Deploy') {
     steps {
         bat '''
-        echo Deploying project...
-        xcopy /E /I /Y * C:\\deploy\\portfolio
+        rmdir /S /Q C:\\deploy\\portfolio
+        mkdir C:\\deploy\\portfolio
+        xcopy /E /I /Y dist\\* C:\\deploy\\portfolio
         '''
     }
 }
+       
     }
 }
