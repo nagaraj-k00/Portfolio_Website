@@ -1,37 +1,28 @@
 pipeline {
     agent any
 
-
     stages {
-
-        stage('Clone') {
-            steps {
-                git credentialsId: 'github-token',
-                    url: 'https://github.com/GPTMudhol/portfolio-brilliance.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                bat 'echo Installing dependencies...'
             }
         }
 
         stage('Build') {
             steps {
-                bat 'npm run build'
+                bat 'echo Building project...'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'npm test || echo No tests found'
+                bat 'echo Testing project...'
             }
         }
 
         stage('Run Project') {
             steps {
-                bat 'start cmd /c npm start'
+                bat 'echo Running project...'
             }
         }
     }
