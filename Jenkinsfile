@@ -35,10 +35,6 @@ stage('Deploy') {
         rmdir /S /Q C:\\deploy\\portfolio
         mkdir C:\\deploy\\portfolio
         xcopy /E /I /Y dist\\* C:\\deploy\\portfolio
-
-        echo Starting server...
-        cd C:\\deploy\\portfolio
-        npx serve -l 5000
         '''
     }
 }
