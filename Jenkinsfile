@@ -33,7 +33,7 @@ stage('Deploy') {
     steps {
         bat '''
         rmdir /S /Q C:\\deploy\\portfolio
-        mkdir C:\\deploy\\portfolio
+        mkdir C:\\hello\\portfolio
         xcopy /E /I /Y dist\\* C:\\deploy\\portfolio
         '''
     }
