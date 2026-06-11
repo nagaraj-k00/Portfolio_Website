@@ -5,7 +5,7 @@ export const useTypewriter = (text: string, speed: number = 100, delay: number =
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     
     const startTyping = () => {
       let index = 0;
