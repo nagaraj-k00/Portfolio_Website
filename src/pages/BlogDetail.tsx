@@ -118,7 +118,7 @@ const BlogDetail = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-code:text-primary prose-code:bg-secondary/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-secondary prose-pre:border prose-pre:border-border"
             >
-              <div dangerouslySetInnerHTML={{ __html: formatContent(post.content) }} />
+              <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(formatContent(post.content)) }} />
             </motion.article>
 
             {/* Sidebar */}
