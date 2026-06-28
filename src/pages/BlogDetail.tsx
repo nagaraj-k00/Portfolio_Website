@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Tag, Share2, Twitter, Linkedin, Link as LinkIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
