@@ -9,6 +9,18 @@ const categories = ['All', 'Java', 'Full-Stack', 'Security'];
 
 const projects = [
   {
+    id: 6,
+    title: 'Sukoon Garden Restaurant',
+    problem: 'Digitizing restaurant operations with seamless dine-in and online ordering.',
+    description: 'Multi-role restaurant ordering and management platform with digital menus, QR-based dine-in ordering, online ordering, and role-based restaurant operations.',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&auto=format&fit=crop',
+    category: 'Full-Stack',
+    tech: ['Flutter', 'React', 'Supabase', 'PostgreSQL', 'REST API'],
+    result: 'QR dine-in, online ordering & role-based management',
+    liveUrl: '#',
+    githubUrl: 'https://github.com/GPTMudhol',
+  },
+  {
     id: 1,
     title: 'Hospital Management System',
     problem: 'Streamlined patient records and appointment scheduling for healthcare providers.',
