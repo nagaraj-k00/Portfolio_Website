@@ -1,73 +1,77 @@
-# Welcome to your Lovable project
+# Portfolio Brilliance
 
-## Project info
+Create a professional software developer portfolio website with the following specifications:
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+HERO SECTION:
+- Full-screen animated hero with a gradient background (dark to teal accent)
+- Animated text that types out the developer's name and title with a smooth fade-in effect
+- Large CTA button "View My Work" with hover glow effect and smooth transition
+- Subtle floating animation or parallax effect on background shapes
 
-## How can I edit this code?
+NAVIGATION:
+- Sticky navigation bar with smooth scroll-to-section functionality
+- Clean, minimalist design with dark theme
+- Hamburger menu for mobile devices with smooth slide animation
 
-There are several ways of editing your application.
+ABOUT SECTION:
+- Professional bio with animated counter statistics (projects completed, years experience, etc.)
+- Skill bars that animate on scroll with fill animation
+- Tech stack displayed as interactive tags with hover effects (lighting up on hover)
+- Professional image with subtle shadow and scale hover effect
 
-**Use Lovable**
+PROJECTS/PORTFOLIO SECTION:
+- Masonry grid layout for project showcase
+- Each project card has:
+  - Project thumbnail image with overlay
+  - Hover effect: smooth scale-up, shadow expansion, and text reveal
+  - Project title, description, and tech stack tags
+  - Links to live demo and GitHub repo
+- Filter/category buttons to sort projects (All, Web Dev, Blockchain, Full-Stack, etc.)
+- Animated transition between filtered views
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+INTERACTIVE ELEMENTS:
+- Smooth scroll animations and fade-in effects on sections as user scrolls
+- Gradient text for headings
+- Glowing buttons with hover effects
+- Smooth page transitions and link animations
 
-Changes made via Lovable will be committed automatically to this repo.
+CONTACT SECTION:
+- Contact form with smooth validation feedback
+- Social media links with icon hover animations
+- Email and LinkedIn CTA buttons
 
-**Use your preferred IDE**
+DESIGN STYLE:
+- Modern minimalist with dark theme (dark charcoal background with teal/cyan accents)
+- Clean typography with good hierarchy
+- Smooth transitions and micro-interactions throughout
+- Responsive design for mobile, tablet, and desktop
+- Glassmorphism effects on cards (optional: semi-transparent backgrounds with blur)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+ANIMATIONS:
+- Page load animations (fade-in, slide-up)
+- Scroll-triggered animations for section reveals
+- Button hover glow effects
+- Smooth parallax scrolling
+- Counter animations for statistics
+- Floating/breathing animations on background elements
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+This project was built with [Lovable](https://lovable.dev).
 
-Follow these steps:
+## Build with Lovable
+
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/a48a8f54-9bca-4ef0-9a24-6d56c26817d7).
+
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+git clone <this-repository-url>
+cd <repository-name>
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
