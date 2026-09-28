@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["Poppins", "sans-serif"],
+        sans: ["Space Grotesk", "sans-serif"],
+        display: ["Archivo Black", "Space Grotesk", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -68,6 +68,11 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        "neo-sm": "3px 3px 0 hsl(var(--shadow-color))",
+        "neo": "7px 7px 0 hsl(var(--shadow-color))",
+        "neo-lg": "12px 12px 0 hsl(var(--shadow-color))",
       },
       keyframes: {
         "accordion-down": {
