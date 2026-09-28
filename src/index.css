@@ -1,37 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Light Mode - Modern & Vibrant */
-    --background: 220 20% 97%;
-    --foreground: 222 47% 11%;
+    --background: 48 17% 94%;
+    --foreground: 0 0% 5%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 0 0% 5%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 250 84% 54%;
+    --primary: 18 100% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 160 84% 39%;
-    --accent-foreground: 0 0% 100%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 0 0% 5%;
+    --muted: 48 10% 87%;
+    --muted-foreground: 0 0% 28%;
+    --accent: 84 79% 53%;
+    --accent-foreground: 0 0% 5%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 250 84% 54%;
-    --radius: 0.75rem;
+    --border: 0 0% 5%;
+    --input: 0 0% 5%;
+    --ring: 18 100% 50%;
+    --radius: 0.125rem;
     
     /* Custom colors */
-    --indigo: 250 84% 54%;
-    --emerald: 160 84% 39%;
-    --glow: 250 84% 54%;
+    --indigo: 18 100% 50%;
+    --emerald: 84 79% 53%;
+    --glow: 18 100% 50%;
+    --shadow-color: 0 0% 5%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 222 47% 11%;
@@ -44,27 +42,27 @@
   }
 
   .dark {
-    /* Dark Mode - Premium & Sleek */
-    --background: 225 25% 8%;
-    --foreground: 220 14% 96%;
-    --card: 225 25% 10%;
-    --card-foreground: 220 14% 96%;
-    --popover: 225 25% 8%;
-    --popover-foreground: 220 14% 96%;
-    --primary: 250 84% 64%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 225 20% 14%;
-    --secondary-foreground: 220 14% 96%;
-    --muted: 225 20% 14%;
-    --muted-foreground: 215 20% 60%;
-    --accent: 160 84% 45%;
-    --accent-foreground: 0 0% 100%;
+    --background: 0 0% 7%;
+    --foreground: 48 17% 94%;
+    --card: 0 0% 11%;
+    --card-foreground: 48 17% 94%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 48 17% 94%;
+    --primary: 18 100% 57%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 48 17% 94%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 72%;
+    --accent: 84 79% 53%;
+    --accent-foreground: 0 0% 5%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 225 15% 18%;
-    --input: 225 15% 18%;
-    --ring: 250 84% 64%;
-    --glow: 250 84% 64%;
+    --border: 48 17% 94%;
+    --input: 48 17% 94%;
+    --ring: 18 100% 57%;
+    --glow: 18 100% 57%;
+    --shadow-color: 18 100% 57%;
 
     --sidebar-background: 225 25% 10%;
     --sidebar-foreground: 220 14% 96%;
@@ -84,10 +82,19 @@
   
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    letter-spacing: 0;
   }
   
   html {
     scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: 0;
+  }
+
+  section:not(#hero) {
+    border-bottom: 3px solid hsl(var(--border));
   }
 
   ::selection {
@@ -99,10 +106,8 @@
 @layer utilities {
   /* Animated gradient text */
   .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(280 80% 60%), hsl(var(--accent)));
-    background-size: 200% 200%;
-    animation: gradient-shift 5s ease infinite;
+    color: hsl(var(--primary));
+    background: none;
   }
 
   @keyframes gradient-shift {
@@ -112,30 +117,27 @@
   
   /* Premium card styling with 3D hover */
   .pro-card {
-    @apply relative overflow-hidden rounded-2xl;
+    @apply relative overflow-hidden;
     background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    box-shadow: 0 4px 20px hsl(var(--background) / 0.2);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-style: preserve-3d;
+    border: 3px solid hsl(var(--border));
+    box-shadow: 7px 7px 0 hsl(var(--shadow-color));
+    transition: transform 180ms ease, box-shadow 180ms ease;
   }
   
   .pro-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.1), transparent 50%, hsl(var(--accent) / 0.05));
+    background: hsl(var(--accent) / 0.12);
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
   }
   
   .pro-card:hover {
-    border-color: hsl(var(--primary) / 0.4);
-    box-shadow: 
-      0 20px 40px hsl(var(--primary) / 0.15),
-      0 0 60px hsl(var(--primary) / 0.05);
-    transform: translateY(-8px);
+    border-color: hsl(var(--border));
+    box-shadow: 10px 10px 0 hsl(var(--shadow-color));
+    transform: translate(-3px, -3px);
   }
 
   .pro-card:hover::before {
@@ -180,10 +182,11 @@
   
   /* Section badge with shimmer */
   .section-badge {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium relative overflow-hidden;
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--primary) / 0.05));
-    color: hsl(var(--primary));
-    border: 1px solid hsl(var(--primary) / 0.2);
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-black uppercase relative overflow-hidden;
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    border: 2px solid hsl(var(--border));
+    box-shadow: 4px 4px 0 hsl(var(--shadow-color));
   }
 
   .section-badge::before {
@@ -193,8 +196,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.2), transparent);
-    animation: shimmer 3s infinite;
+    display: none;
   }
 
   @keyframes shimmer {
@@ -204,25 +206,25 @@
   
   /* Skill badge with hover glow */
   .skill-badge {
-    @apply px-3 py-2 rounded-xl text-sm font-medium transition-all duration-300;
+    @apply px-3 py-2 text-sm font-bold transition-all duration-200;
     background: hsl(var(--secondary));
     color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--border));
+    border: 2px solid hsl(var(--border));
   }
 
   .skill-badge:hover {
     background: hsl(var(--primary) / 0.1);
     border-color: hsl(var(--primary) / 0.3);
-    box-shadow: 0 4px 20px hsl(var(--primary) / 0.15);
-    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 hsl(var(--shadow-color));
+    transform: translate(-2px, -2px);
   }
   
   /* Tech badge */
   .tech-badge {
-    @apply px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200;
-    background: hsl(var(--primary) / 0.1);
-    color: hsl(var(--primary));
-    border: 1px solid hsl(var(--primary) / 0.2);
+    @apply px-3 py-1.5 text-xs font-bold uppercase transition-all duration-200;
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    border: 2px solid hsl(var(--border));
   }
 
   .tech-badge:hover {
@@ -312,6 +314,46 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: hsl(var(--card));
+    border: 3px solid hsl(var(--border));
+    box-shadow: 6px 6px 0 hsl(var(--shadow-color));
+  }
+
+  .neo-highlight {
+    display: inline;
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+    padding-inline: 0.12em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .neo-grid {
+    opacity: 0.08;
+    background-image: linear-gradient(hsl(var(--foreground)) 2px, transparent 2px), linear-gradient(90deg, hsl(var(--foreground)) 2px, transparent 2px);
+    background-size: 48px 48px;
+  }
+
+  input, textarea {
+    border-width: 2px !important;
+    border-color: hsl(var(--border)) !important;
+    border-radius: 0 !important;
+    background: hsl(var(--background)) !important;
+    box-shadow: 3px 3px 0 hsl(var(--shadow-color));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

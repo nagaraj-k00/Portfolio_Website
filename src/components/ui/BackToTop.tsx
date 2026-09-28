@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,18 +22,16 @@ export const BackToTop = () => {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.button
+        <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/25 flex items-center justify-center cursor-pointer transition-shadow hover:shadow-xl hover:shadow-primary/30"
-          aria-label="Back to top"
+          className="fixed bottom-8 right-8 z-50"
         >
-          <ArrowUp size={20} />
-        </motion.button>
+          <Button size="icon" onClick={scrollToTop} aria-label="Back to top" title="Back to top" className="h-12 w-12">
+            <ArrowUp size={20} />
+          </Button>
+        </motion.div>
       )}
     </AnimatePresence>
   );
