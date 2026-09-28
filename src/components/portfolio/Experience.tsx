@@ -4,6 +4,19 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const experiences = [
   {
+    id: 0,
+    title: 'QA Testing & Full Stack Developer',
+    company: 'Springevening',
+    location: 'India',
+    period: '2026',
+    achievements: [
+      'Developed and maintained full-stack web application features and RESTful APIs',
+      'Performed functional, API, integration, and regression testing to identify and resolve software defects',
+      'Debugged application issues and validated frontend, backend, database, and user workflows',
+      'Collaborated with developers using Git to improve application quality, reliability, and performance',
+    ],
+  },
+  {
     id: 1,
     title: 'Full Stack Development Intern',
     company: 'Revolution IT Solutions',
