@@ -17,8 +17,8 @@ const projects = [
     category: 'Full-Stack',
     tech: ['Flutter', 'React', 'Supabase', 'PostgreSQL', 'REST API'],
     result: 'QR dine-in, online ordering & role-based management',
-    liveUrl: '#',
-    githubUrl: 'https://github.com/GPTMudhol',
+    liveUrl: 'https://sukoon-garden-hub.vercel.app/',
+    githubUrl: 'https://github.com/nagaraj-k00/sukoon-garden-hub',
   },
   {
     id: 1,

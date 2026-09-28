@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { useCountUp } from "@/hooks/useCountUp";
 
 const stats = [
-  { value: 180, suffix: "+", label: "Worldwide Clients" },
+  { value: 3, suffix: "", label: "Happy Clients" },
   { value: 10, suffix: "+", label: "Projects Done" },
-  { value: 5, suffix: "+", label: "Years Experience" },
+  { value: 1, suffix: "", label: "Year Experience" },
 ];
 
 export const Hero = () => {
