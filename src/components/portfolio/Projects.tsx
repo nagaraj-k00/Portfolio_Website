@@ -30,7 +30,7 @@ const projects = [
     tech: ['Java', 'Spring Boot', 'MySQL', 'REST API'],
     result: 'Reduced administrative time by 40%',
     liveUrl: '#',
-    githubUrl: 'https://github.com/GPTMudhol',
+    githubUrl: 'https://github.com/nagaraj-k00',
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ const projects = [
     tech: ['Java', 'Machine Learning', 'Web Scraping'],
     result: 'Achieved 92% detection accuracy',
     liveUrl: '#',
-    githubUrl: 'https://github.com/GPTMudhol',
+    githubUrl: 'https://github.com/nagaraj-k00',
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const projects = [
     tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
     result: 'Handled 1000+ concurrent users',
     liveUrl: '#',
-    githubUrl: 'https://github.com/GPTMudhol',
+    githubUrl: 'https://github.com/nagaraj-k00',
   },
   {
     id: 4,
@@ -66,7 +66,7 @@ const projects = [
     tech: ['Python', 'TensorFlow', 'NLP', 'MySQL'],
     result: '95% spam detection rate',
     liveUrl: '#',
-    githubUrl: 'https://github.com/GPTMudhol',
+    githubUrl: 'https://github.com/nagaraj-k00',
   },
   {
     id: 5,
@@ -78,7 +78,7 @@ const projects = [
     tech: ['Java', 'JDBC', 'MySQL', 'Swing'],
     result: 'Manages 50+ vehicles efficiently',
     liveUrl: '#',
-    githubUrl: 'https://github.com/GPTMudhol',
+    githubUrl: 'https://github.com/nagaraj-k00',
   },
 ];
 

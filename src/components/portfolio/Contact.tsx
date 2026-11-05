@@ -40,8 +40,10 @@ export const Contact = () => {
         {
           from_name: formData.name,
           from_email: formData.email,
+          reply_to: formData.email,
           message: formData.message,
           to_name: 'Nagaraj Kamatagi',
+          to_email: 'nagarajkamatagi@gmail.com',
         },
         EMAILJS_PUBLIC_KEY
       );

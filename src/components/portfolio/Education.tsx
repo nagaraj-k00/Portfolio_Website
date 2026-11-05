@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Award, Calendar, ExternalLink } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import certAws from "@/assets/cert-aws.asset.json";
+import certNetworking from "@/assets/cert-networking.asset.json";
+import certSoftwareSimulation from "@/assets/cert-software-simulation.asset.json";
+import certJavaGreatLearning from "@/assets/cert-java-greatlearning.asset.json";
+import certJavaFundamentals from "@/assets/cert-java-fundamentals.asset.json";
 
 const education = [
   {

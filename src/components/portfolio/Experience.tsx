@@ -4,6 +4,19 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const experiences = [
   {
+    id: 2,
+    title: 'AI Intern (Entry Level)',
+    company: 'Edutainer',
+    location: 'Remote',
+    period: '2026',
+    achievements: [
+      'Completed a 12-week AI program: ML fundamentals, ChatGPT for Professionals, and Midjourney Mastery',
+      'Applied ML concepts — regression, data visualisation, feature correlation, neural networks, ensemble learning',
+      'Practised prompt engineering for professional text and AI image-generation workflows',
+      'Completed weekly quizzes and assignments across the program',
+    ],
+  },
+  {
     id: 0,
     title: 'QA Testing & Full Stack Developer',
     company: 'Springevening',
