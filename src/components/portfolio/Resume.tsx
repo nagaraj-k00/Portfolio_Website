@@ -2,19 +2,23 @@ import { motion } from "framer-motion";
 import { Download, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import resumeAsset from "@/assets/resume.asset.json";
+
+const RESUME_URL = resumeAsset.url;
+const RESUME_FILENAME = "Nagaraj_Kamatagi_Resume.pdf";
 
 export const Resume = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/resume.pdf";
-    link.download = "Nagaraj_Kamatagi_Resume.pdf";
+    link.href = RESUME_URL;
+    link.download = RESUME_FILENAME;
     link.click();
   };
 
   const handlePreview = () => {
-    window.open("/resume.pdf", "_blank");
+    window.open(RESUME_URL, "_blank", "noopener,noreferrer");
   };
 
   return (
