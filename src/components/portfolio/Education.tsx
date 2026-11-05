@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Award, Calendar, ExternalLink } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import certAws from "@/assets/cert-aws.asset.json";
+import certNetworking from "@/assets/cert-networking.asset.json";
+import certSoftwareSimulation from "@/assets/cert-software-simulation.asset.json";
+import certJavaGreatLearning from "@/assets/cert-java-greatlearning.asset.json";
+import certJavaFundamentals from "@/assets/cert-java-fundamentals.asset.json";
 
 const education = [
   {
@@ -36,35 +41,35 @@ const certifications = [
     name: "Software Engineering Job Simulation",
     issuer: "Forage / Infosys Springboard",
     date: "2026",
-    credentialUrl: "#",
+    credentialUrl: certSoftwareSimulation.url,
   },
   {
     id: 2,
     name: "AWS Solutions Architecture Job Simulation",
     issuer: "Forage / Infosys Springboard",
     date: "2026",
-    credentialUrl: "#",
+    credentialUrl: certAws.url,
   },
   {
     id: 3,
     name: "Fundamentals of Java Programming",
     issuer: "Coursera (Board Infinity)",
     date: "2024",
-    credentialUrl: "#",
+    credentialUrl: certJavaFundamentals.url,
   },
   {
     id: 4,
     name: "Computer Networking",
     issuer: "Coursera (Google)",
     date: "2024",
-    credentialUrl: "#",
+    credentialUrl: certNetworking.url,
   },
   {
     id: 5,
     name: "Java Programming",
     issuer: "Great Learning",
     date: "2024",
-    credentialUrl: "#",
+    credentialUrl: certJavaGreatLearning.url,
   },
 ];
 

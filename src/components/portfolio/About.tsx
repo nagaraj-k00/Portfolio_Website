@@ -11,7 +11,7 @@ const valueProps = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/GPTMudhol", label: "GitHub" },
+  { icon: Github, href: "https://github.com/nagaraj-k00", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/nagaraj-kamatagi-8b52972a2", label: "LinkedIn" },
   { icon: Mail, href: "mailto:nagarajkamatagi@gmail.com", label: "Email" },
 ];
