@@ -84,6 +84,11 @@ export const Resume = () => {
           </motion.div>
         </motion.div>
       </div>
+      <PdfViewerModal
+        url={isPreviewOpen ? RESUME_URL : null}
+        title="Nagaraj Kamatagi — Resume"
+        onClose={() => setIsPreviewOpen(false)}
+      />
     </section>
   );
 };
