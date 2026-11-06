@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Calendar, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { GraduationCap, Award, Calendar, Eye } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { PdfViewerModal } from "@/components/ui/PdfViewerModal";
 import certAws from "@/assets/cert-aws.asset.json";
 import certNetworking from "@/assets/cert-networking.asset.json";
 import certSoftwareSimulation from "@/assets/cert-software-simulation.asset.json";
@@ -75,6 +77,7 @@ const certifications = [
 
 export const Education = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const [activeCert, setActiveCert] = useState<{ name: string; url: string } | null>(null);
 
   return (
     <section id="education" className="py-24 relative">
