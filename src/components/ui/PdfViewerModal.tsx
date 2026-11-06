@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface PdfViewerModalProps {
