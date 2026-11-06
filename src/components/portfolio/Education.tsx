@@ -170,6 +170,11 @@ export const Education = () => {
           </div>
         </motion.div>
       </div>
+      <PdfViewerModal
+        url={activeCert?.url ?? null}
+        title={activeCert?.name ?? ""}
+        onClose={() => setActiveCert(null)}
+      />
     </section>
   );
 };
