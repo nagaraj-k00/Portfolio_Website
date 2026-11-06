@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface PdfViewerModalProps {
@@ -49,15 +49,21 @@ export const PdfViewerModal = ({ url, title, onClose }: PdfViewerModalProps) => 
               <span className="font-display font-bold text-foreground truncate">
                 {title}
               </span>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={onClose}
-                aria-label="Close viewer"
-                className="shrink-0"
-              >
-                <X size={18} />
-              </Button>
+              <div className="flex items-center gap-2 shrink-0">
+                <Button variant="outline" size="icon" asChild aria-label="Open in new tab">
+                  <a href={url ?? "#"} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink size={18} />
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={onClose}
+                  aria-label="Close viewer"
+                >
+                  <X size={18} />
+                </Button>
+              </div>
             </div>
             <iframe
               src={`${url}#view=FitH`}
