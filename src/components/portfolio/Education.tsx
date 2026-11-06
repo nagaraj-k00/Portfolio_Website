@@ -141,16 +141,15 @@ export const Education = () => {
               </h3>
               <div className="grid gap-4">
                 {certifications.map((cert, index) => (
-                  <motion.a
+                  <motion.button
                     key={cert.id}
-                    href={cert.credentialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    type="button"
+                    onClick={() => setActiveCert({ name: cert.name, url: cert.credentialUrl })}
                     initial={{ opacity: 0, x: 30 }}
                     animate={isVisible ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     whileHover={{ scale: 1.02, x: 5 }}
-                    className="glass-card rounded-xl p-4 hover:border-primary/50 transition-all duration-300 group flex items-center justify-between"
+                    className="glass-card rounded-xl p-4 hover:border-primary/50 transition-all duration-300 group flex items-center justify-between w-full text-left cursor-pointer"
                   >
                     <div>
                       <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
@@ -160,11 +159,11 @@ export const Education = () => {
                         {cert.issuer} • {cert.date}
                       </p>
                     </div>
-                    <ExternalLink
+                    <Eye
                       size={18}
-                      className="text-muted-foreground group-hover:text-primary transition-colors"
+                      className="text-muted-foreground group-hover:text-primary transition-colors shrink-0"
                     />
-                  </motion.a>
+                  </motion.button>
                 ))}
               </div>
             </div>
