@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink } from "lucide-react";
+import { LoaderCircle, RotateCw, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface PdfViewerModalProps {
@@ -10,6 +10,10 @@ interface PdfViewerModalProps {
 }
 
 export const PdfViewerModal = ({ url, title, onClose }: PdfViewerModalProps) => {
+  const [viewerUrl, setViewerUrl] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+
   useEffect(() => {
     if (!url) return;
     const onKey = (e: KeyboardEvent) => {
@@ -22,6 +26,41 @@ export const PdfViewerModal = ({ url, title, onClose }: PdfViewerModalProps) => 
       document.body.style.overflow = "";
     };
   }, [url, onClose]);
+
+  useEffect(() => {
+    if (!url) {
+      setViewerUrl(null);
+      setLoadError(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    let objectUrl: string | null = null;
+    setViewerUrl(null);
+    setLoadError(false);
+
+    fetch(url, { signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`PDF request failed (${response.status})`);
+        const pdf = await response.arrayBuffer();
+        const signature = new TextDecoder().decode(pdf.slice(0, 5));
+        if (signature !== "%PDF-") throw new Error("The file response is not a PDF");
+        return pdf;
+      })
+      .then((pdf) => {
+        objectUrl = URL.createObjectURL(new Blob([pdf], { type: "application/pdf" }));
+        setViewerUrl(objectUrl);
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setLoadError(true);
+      });
+
+    return () => {
+      controller.abort();
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+    };
+  }, [url, retryCount]);
 
   return (
     <AnimatePresence>
@@ -50,11 +89,6 @@ export const PdfViewerModal = ({ url, title, onClose }: PdfViewerModalProps) => 
                 {title}
               </span>
               <div className="flex items-center gap-2 shrink-0">
-                <Button variant="outline" size="icon" asChild aria-label="Open in new tab">
-                  <a href={url ?? "#"} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink size={18} />
-                  </a>
-                </Button>
                 <Button
                   variant="outline"
                   size="icon"
@@ -65,11 +99,30 @@ export const PdfViewerModal = ({ url, title, onClose }: PdfViewerModalProps) => 
                 </Button>
               </div>
             </div>
-            <iframe
-              src={`${url}#view=FitH`}
-              title={title}
-              className="flex-1 w-full bg-white"
-            />
+            <div className="relative flex-1 min-h-0 bg-card">
+              {viewerUrl && (
+                <iframe
+                  src={`${viewerUrl}#view=FitH`}
+                  title={title}
+                  className="absolute inset-0 h-full w-full bg-background"
+                />
+              )}
+              {!viewerUrl && !loadError && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted-foreground" role="status">
+                  <LoaderCircle size={28} className="animate-spin" />
+                  <span>Loading PDF…</span>
+                </div>
+              )}
+              {loadError && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center">
+                  <p className="text-foreground">This PDF couldn’t be loaded. Please try again.</p>
+                  <Button variant="outline" onClick={() => setRetryCount((count) => count + 1)}>
+                    <RotateCw className="mr-2" size={16} />
+                    Try again
+                  </Button>
+                </div>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       )}
